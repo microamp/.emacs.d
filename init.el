@@ -8,18 +8,21 @@
         ("melpa" . "http://melpa.milkbox.net/packages/")))
 
 (require 'cl)
-(defvar packages-list
-  '(auto-complete
+(defvar package-list
+  '(alchemist
+    auto-complete
     bash-completion
     bookmark+
     cider
     clojure-mode
     color-theme
     color-theme-buffer-local
+    company
     dired+
     dired-rainbow
     dired-toggle-sudo
     ein
+    elixir-mode
     epc
     erc-hl-nicks
     fill-column-indicator
@@ -66,18 +69,14 @@
     zenburn-theme)
   "List of packages needs to be upgraded/installed at launch")
 
-(defun has-package-not-installed ()
-  (loop for p in packages-list
-        when (not (package-installed-p p)) do (return t)
-        finally (return nil)))
+(defun package-missing? ()
+  (dolist (p package-list)
+    (unless (package-installed-p p)
+      (return t))))
 
-(when (has-package-not-installed)
-  ;; check for new packages (package versions)
-  (message "%s" "Checking package versions...")
+(when (package-missing?)
   (package-refresh-contents)
-  (message "%s" " done")
-  ;; install missing packages
-  (dolist (p packages-list)
+  (dolist (p package-list)
     (when (not (package-installed-p p))
       (package-install p))))
 
@@ -214,6 +213,7 @@
 (add-to-list 'load-path (concat emacs-dir "/" custom-lib-dir))
 (load-library "microamp-chat")
 (load-library "microamp-colours")
+(load-library "microamp-elixir")
 (load-library "microamp-lisp")
 (load-library "microamp-mail")
 (load-library "microamp-ocaml")
