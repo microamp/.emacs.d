@@ -1,5 +1,7 @@
 (require 'helm)
 (require 'helm-config)
+(require 'helm-eshell)
+(require 'helm-descbinds)
 
 ;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
 ;; Changed to "C-c h". Note: We must set "C-c h" globally, because we
@@ -51,6 +53,32 @@
 (setq helm-semantic-fuzzy-match t
       helm-imenu-fuzzy-match    t)
 
+;; helm-occur
+(global-set-key (kbd "C-c h o") 'helm-occur)
+
+;; helm-all-mark-rings
+(global-set-key (kbd "C-c h SPC") 'helm-all-mark-rings)
+
+;; helm-regexp ("C-c h r")
+
+;; helm-top ("C-c h t")
+
+;; helm-surfraw ("C-c h s") (NOTE: requires 'surfraw' installed)
+
+;; helm-google-suggest
+(global-set-key (kbd "C-c h g") 'helm-google-suggest)
+
 ;; helm-resume ("C-c h b")
+
+;; helm-eshell-history
+(add-hook 'eshell-mode-hook
+          #'(lambda ()
+              (define-key eshell-mode-map (kbd "C-c C-l")  'helm-eshell-history)))
+
+;; helm-minibuffer-history
+(define-key minibuffer-local-map (kbd "C-c C-l") 'helm-minibuffer-history)
+
+;; "C-c h C-h" to list helm bindings
+(helm-descbinds-mode)
 
 (provide 'microamp-helm)

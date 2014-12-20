@@ -35,6 +35,7 @@
     go-play
     google-this
     helm
+    helm-descbinds
     help-fns+
     highlight
     highlight-parentheses
@@ -178,7 +179,7 @@
 (define-key global-map (kbd "C-x w") 'split-window-below)
 (define-key global-map (kbd "C-x v") 'split-window-right)
 
- ;; focus the new window after split
+;; focus the new window after split
 ;(global-set-key "\C-x2" (lambda ()
 ;                          (interactive)
 ;                          (split-window-below)
