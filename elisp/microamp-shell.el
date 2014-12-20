@@ -32,6 +32,7 @@
 ;(define-key global-map (kbd "C-x s") 'multi-eshell)
 ;(define-key global-map (kbd "M-SPC") 'multi-eshell-switch)
 (define-key global-map (kbd "C-x s") 'eshell)
+(define-key global-map (kbd "M-SPC") 'eshell)
 
 ;; preserve M-n/M-p
 ;(add-hook 'eshell-mode-hook
