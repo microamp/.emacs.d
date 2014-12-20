@@ -27,6 +27,8 @@
 (setq jedi:complete-on-dot t)
 (jedi:install-server)
 
+(setq jedi:install-imenu t)
+
 ;; jedi shortcuts
 (setq jedi:use-shortcuts t) ; M-.: jedi:goto-definition, M-,: jedi:goto-definition-pop-marker
 

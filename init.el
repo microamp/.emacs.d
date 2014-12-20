@@ -1,13 +1,13 @@
+(require 'cl)
+
 ;; packages
 (require 'package)
-
-(package-initialize)
 (setq package-archives
       '(("gnu" . "http://elpa.gnu.org/packages/")
         ("marmalade" . "http://marmalade-repo.org/packages/")
         ("melpa" . "http://melpa.milkbox.net/packages/")))
+(package-initialize)
 
-(require 'cl)
 (defvar package-list
   '(alchemist
     auto-complete
@@ -33,11 +33,13 @@
     go-eldoc
     go-mode
     go-play
+    google-this
+    helm
     help-fns+
     highlight
     highlight-parentheses
     hy-mode
-    ido-load-library
+    ;ido-load-library
     ipython
     jabber
     jedi
@@ -59,9 +61,9 @@
     rcirc-notify
     ruby-mode
     sml-mode
-    starter-kit
-    starter-kit-eshell
-    starter-kit-lisp
+    ;starter-kit
+    ;starter-kit-eshell
+    ;starter-kit-lisp
     tuareg
     twittering-mode
     utop
@@ -83,8 +85,9 @@
 (require 'dired+)
 (require 'dired-rainbow)
 (require 'highlight-parentheses)
-(require 'ido)
+;(require 'ido)
 (require 'rainbow-delimiters)
+(require 'helm-config)
 
 (setq emacs-dir "~/.emacs.d")
 (setq custom-lib-dir "elisp")
@@ -139,10 +142,10 @@
 (setq-default doc-view-continuous 1)
 
 ;; highlight current line
-;(global-hl-line-mode t)
+(global-hl-line-mode t)
 
 ;; ido
-(ido-mode t)
+;(ido-mode nil)
 
 ;; electric-pair
 (electric-pair-mode t)
@@ -214,6 +217,7 @@
 (load-library "microamp-chat")
 (load-library "microamp-colours")
 (load-library "microamp-elixir")
+(load-library "microamp-helm")
 (load-library "microamp-lisp")
 (load-library "microamp-mail")
 (load-library "microamp-ocaml")
