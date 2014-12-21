@@ -66,7 +66,7 @@
 ;; helm-surfraw ("C-c h s") (NOTE: requires 'surfraw' installed)
 
 ;; helm-google-suggest
-(global-set-key (kbd "C-c h g") 'helm-google-suggest)
+(global-set-key (kbd "C-c h g g") 'helm-google-suggest)
 
 ;; helm-resume ("C-c h b")
 
