@@ -3,6 +3,7 @@
 (eval-after-load "flymake" '(require 'flymake-python-pyflakes))
 ;(require 'ipython)
 (require 'jedi)
+(require 'helm-pydoc)
 
 ;;; use IPython as default shell
 ;(setq-default py-shell-name "ipython")
@@ -39,6 +40,10 @@
 ;(eval-after-load "python"
 ;  '(define-key python-mode-map "\C-cx" 'jedi-direx:pop-to-buffer))
 ;(add-hook 'jedi-mode-hook 'jedi-direx:setup)
+
+(eval-after-load "python"
+  '(progn
+     (define-key python-mode-map (kbd "C-c C-d") 'helm-pydoc)))
 
 ;; python hooks
 (add-hook 'python-mode-hook 'fci-mode)

@@ -36,6 +36,7 @@
     google-this
     helm
     helm-descbinds
+    helm-pydoc
     help-fns+
     highlight
     highlight-parentheses
@@ -160,6 +161,9 @@
   (lambda ()
     (highlight-parentheses-mode t)))
 (global-highlight-parentheses-mode t)
+
+;; map C-c v to eval-buffer
+(define-key global-map (kbd "C-c v") 'eval-buffer)
 
 ;; map RET to newline-and-indent
 (define-key global-map (kbd "RET") 'newline-and-indent)
