@@ -122,6 +122,9 @@
 ;; dired+ for reusing dired buffers
 (toggle-diredp-find-file-reuse-dir t)
 
+;; y/n instead of yes/no
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 ;; dired-rainbow settings
 (dired-rainbow-define media "#BC8383" ("mp3" "mp4" "MP3" "MP4" "avi" "mpg" "flv" "ogg"))
 (dired-rainbow-define elisp "#DFAF8F" ("el"))
