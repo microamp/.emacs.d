@@ -36,6 +36,7 @@
     google-this
     helm
     helm-descbinds
+    helm-projectile
     helm-pydoc
     help-fns+
     highlight
@@ -57,6 +58,7 @@
     nodejs-repl
     org
     paredit
+    projectile
     racket-mode
     rainbow-delimiters
     rcirc-color
@@ -124,6 +126,8 @@
 (dired-rainbow-define media "#BC8383" ("mp3" "mp4" "MP3" "MP4" "avi" "mpg" "flv" "ogg"))
 (dired-rainbow-define elisp "#DFAF8F" ("el"))
 (dired-rainbow-define python "#F0DFAF" ("py"))
+(dired-rainbow-define python "#F0DFAF" ("js"))
+(dired-rainbow-define python "#F0DFAF" ("go"))
 (dired-rainbow-define clojure "#F0DFAF" ("clj"))
 (dired-rainbow-define cljs "#F0DFAF" ("cljs"))
 
@@ -226,6 +230,7 @@
 (load-library "microamp-lisp")
 (load-library "microamp-mail")
 (load-library "microamp-ocaml")
+(load-library "microamp-projectile")
 (load-library "microamp-org")
 (load-library "microamp-python")
 (load-library "microamp-shell")

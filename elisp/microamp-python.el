@@ -41,6 +41,9 @@
 ;  '(define-key python-mode-map "\C-cx" 'jedi-direx:pop-to-buffer))
 ;(add-hook 'jedi-mode-hook 'jedi-direx:setup)
 
+(add-hook 'python-mode-hook
+          (lambda () (local-set-key (kbd "C-c C-p") 'run-python)))
+
 (eval-after-load "python"
   '(progn
      (define-key python-mode-map (kbd "C-c C-d") 'helm-pydoc)))
