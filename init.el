@@ -41,6 +41,7 @@
     help-fns+
     highlight
     highlight-parentheses
+    htmlize
     hy-mode
     ;ido-load-library
     ipython
@@ -57,6 +58,7 @@
     multi-eshell
     nodejs-repl
     org
+    ox-reveal
     paredit
     projectile
     racket-mode
@@ -233,6 +235,7 @@
 (load-library "microamp-lisp")
 (load-library "microamp-mail")
 (load-library "microamp-ocaml")
+(load-library "microamp-presentation")
 (load-library "microamp-projectile")
 (load-library "microamp-org")
 (load-library "microamp-python")

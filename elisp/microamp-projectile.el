@@ -14,6 +14,8 @@
 
 ;; helm-projectile-grep ("C-c p s g")
 
+;; projectile-dired ("C-c p D")
+
 ;; C-c p C-h to view all keybindings
 
 ;; helm integration on
