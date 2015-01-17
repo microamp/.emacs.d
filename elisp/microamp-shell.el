@@ -19,14 +19,15 @@
 (add-hook 'comint-preoutput-filter-functions
           'delete-completion-window-buffer)
 
-;; clear shell when C-l
+;; clear when C-l
 (defun clear-shell ()
   (interactive)
-  (let ((comint-buffer-maximum-size 0))
-    (comint-truncate-buffer)))
+  (let ((inhibit-read-only t))
+    (erase-buffer)
+    (eshell-send-input)))
 
 (add-hook 'eshell-mode-hook
-          (lambda nil (define-key shell-mode-map (kbd "C-l") 'clear-shell)))
+          (lambda () (local-set-key (kbd "C-l") 'clear-shell)))
 
 ;; map C-x s to open (multi-)eshell
 ;(define-key global-map (kbd "C-x s") 'multi-eshell)
@@ -39,9 +40,9 @@
 ;          (lambda () (local-set-key (kbd "M-n") 'comint-next-input)))
 ;(add-hook 'eshell-mode-hook
 ;          (lambda () (local-set-key (kbd "M-p") 'comint-previous-input)))
-(add-hook 'shell-mode-hook
+(add-hook 'eshell-mode-hook
           (lambda () (local-set-key (kbd "M-n") 'eshell-previous-matching-input-from-input)))
-(add-hook 'shell-mode-hook
+(add-hook 'eshell-mode-hook
           (lambda () (local-set-key (kbd "M-p") 'eshell-next-matching-input-from-input)))
 
 (provide 'microamp-shell)
