@@ -66,6 +66,8 @@
     rcirc-color
     rcirc-notify
     ruby-mode
+    smart-mode-line
+    smart-mode-line-powerline-theme
     sml-mode
     ;starter-kit
     ;starter-kit-eshell
@@ -90,10 +92,11 @@
 
 (require 'dired+)
 (require 'dired-rainbow)
+(require 'helm-config)
 (require 'highlight-parentheses)
 ;(require 'ido)
 (require 'rainbow-delimiters)
-(require 'helm-config)
+(require 'smart-mode-line)
 
 (setq emacs-dir "~/.emacs.d")
 (setq custom-lib-dir "elisp")
@@ -131,10 +134,18 @@
 (dired-rainbow-define media "#BC8383" ("mp3" "mp4" "MP3" "MP4" "avi" "mpg" "flv" "ogg"))
 (dired-rainbow-define elisp "#DFAF8F" ("el"))
 (dired-rainbow-define python "#F0DFAF" ("py"))
-(dired-rainbow-define python "#F0DFAF" ("js"))
-(dired-rainbow-define python "#F0DFAF" ("go"))
+(dired-rainbow-define go "#F0DFAF" ("go"))
+(dired-rainbow-define javascript "#F0DFAF" ("js"))
 (dired-rainbow-define clojure "#F0DFAF" ("clj"))
-(dired-rainbow-define cljs "#F0DFAF" ("cljs"))
+(dired-rainbow-define elixir "#F0DFAF" ("exs" "ex"))
+
+(dired-rainbow-define javascript "#F0DFAF" ("js"))
+
+;; smart-mode-line settings
+(sml/setup)
+(sml/apply-theme 'dark)
+;(sml/apply-theme 'light)
+;(sml/apply-theme 'respectful)
 
 ;; disable automatic scrolling/re-centering
 (setq-default scroll-step 1
@@ -247,6 +258,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks")
+ '(custom-safe-themes
+   (quote
+    ("c5a044ba03d43a725bd79700087dea813abcb6beb6be08c7eb3303ed90782482" "6a37be365d1d95fad2f4d185e51928c789ef7a4ccf17e7ca13ad63a8bf5b922f" "756597b162f1be60a12dbd52bab71d40d6a2845a3e3c2584c6573ee9c332a66e" default)))
  '(jabber-account-list
    (quote
     (("sangho.nah@gmail.com"
