@@ -95,6 +95,7 @@
 (require 'helm-config)
 (require 'highlight-parentheses)
 ;(require 'ido)
+(require 'powerline)
 (require 'rainbow-delimiters)
 (require 'smart-mode-line)
 
@@ -139,13 +140,18 @@
 (dired-rainbow-define clojure "#F0DFAF" ("clj"))
 (dired-rainbow-define elixir "#F0DFAF" ("exs" "ex"))
 
-(dired-rainbow-define javascript "#F0DFAF" ("js"))
-
 ;; smart-mode-line settings
 (sml/setup)
-(sml/apply-theme 'dark)
+;(sml/apply-theme 'dark)
 ;(sml/apply-theme 'light)
-;(sml/apply-theme 'respectful)
+(sml/apply-theme 'respectful)
+
+;; powerline settings
+(powerline-default-theme)
+;(powerline-center-theme)
+;(powerline-center-evil-theme)
+;(powerline-vim-theme)
+;(powerline-nano-theme)
 
 ;; disable automatic scrolling/re-centering
 (setq-default scroll-step 1
@@ -172,8 +178,9 @@
 ;; electric-pair
 (electric-pair-mode t)
 
-;; rainbow-delimiters
+;; programming mode hooks
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+(add-hook 'prog-mode-hook 'linum-mode)
 
 ;; highlight-parentheses
 (define-globalized-minor-mode global-highlight-parentheses-mode
