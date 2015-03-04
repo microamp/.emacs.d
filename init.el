@@ -34,6 +34,7 @@
     go-mode
     go-play
     google-this
+    haskell-mode
     helm
     helm-descbinds
     helm-projectile
@@ -141,10 +142,10 @@
 (dired-rainbow-define elixir "#F0DFAF" ("exs" "ex"))
 
 ;; smart-mode-line settings
-(sml/setup)
+;(sml/setup)
 ;(sml/apply-theme 'dark)
 ;(sml/apply-theme 'light)
-(sml/apply-theme 'respectful)
+;(sml/apply-theme 'respectful)
 
 ;; powerline settings
 (powerline-default-theme)
@@ -249,36 +250,13 @@
 (load-library "microamp-chat")
 (load-library "microamp-colours")
 (load-library "microamp-elixir")
+(load-library "microamp-haskell")
 (load-library "microamp-helm")
 (load-library "microamp-lisp")
 (load-library "microamp-mail")
 (load-library "microamp-ocaml")
+(load-library "microamp-org")
 (load-library "microamp-presentation")
 (load-library "microamp-projectile")
-(load-library "microamp-org")
 (load-library "microamp-python")
 (load-library "microamp-shell")
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks")
- '(custom-safe-themes
-   (quote
-    ("c5a044ba03d43a725bd79700087dea813abcb6beb6be08c7eb3303ed90782482" "6a37be365d1d95fad2f4d185e51928c789ef7a4ccf17e7ca13ad63a8bf5b922f" "756597b162f1be60a12dbd52bab71d40d6a2845a3e3c2584c6573ee9c332a66e" default)))
- '(jabber-account-list
-   (quote
-    (("sangho.nah@gmail.com"
-      (:network-server . "talk.google.com")
-      (:port . 5223)
-      (:connection-type . ssl))))))
-
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(hl-line ((t (:background "gray30"))))
- '(linum ((t (:background "black" :foreground "gray50")))))
