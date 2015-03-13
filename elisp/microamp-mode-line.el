@@ -58,4 +58,6 @@
                "%-" ;; fill with '-'
                ))
 
+(set-face-background 'mode-line "gray40")
+
 (provide 'microamp-mode-line)
