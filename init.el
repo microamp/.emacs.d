@@ -66,9 +66,8 @@
     rainbow-delimiters
     rcirc-color
     rcirc-notify
+    restclient
     ruby-mode
-    smart-mode-line
-    smart-mode-line-powerline-theme
     sml-mode
     ;starter-kit
     ;starter-kit-eshell
@@ -77,6 +76,7 @@
     twittering-mode
     utop
     w3m
+    yaml-mode
     zenburn-theme)
   "List of packages needs to be upgraded/installed at launch")
 
@@ -96,9 +96,7 @@
 (require 'helm-config)
 (require 'highlight-parentheses)
 ;(require 'ido)
-(require 'powerline)
 (require 'rainbow-delimiters)
-(require 'smart-mode-line)
 
 (setq emacs-dir "~/.emacs.d")
 (setq custom-lib-dir "elisp")
@@ -140,19 +138,6 @@
 (dired-rainbow-define javascript "#F0DFAF" ("js"))
 (dired-rainbow-define clojure "#F0DFAF" ("clj"))
 (dired-rainbow-define elixir "#F0DFAF" ("exs" "ex"))
-
-;; smart-mode-line settings
-;(sml/setup)
-;(sml/apply-theme 'dark)
-;(sml/apply-theme 'light)
-;(sml/apply-theme 'respectful)
-
-;; powerline settings
-(powerline-default-theme)
-;(powerline-center-theme)
-;(powerline-center-evil-theme)
-;(powerline-vim-theme)
-;(powerline-nano-theme)
 
 ;; disable automatic scrolling/re-centering
 (setq-default scroll-step 1
@@ -254,6 +239,7 @@
 (load-library "microamp-helm")
 (load-library "microamp-lisp")
 (load-library "microamp-mail")
+(load-library "microamp-mode-line")
 (load-library "microamp-ocaml")
 (load-library "microamp-org")
 (load-library "microamp-presentation")
