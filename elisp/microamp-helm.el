@@ -81,4 +81,15 @@
 ;; "C-c h C-h" to list helm bindings
 (helm-descbinds-mode)
 
+;; disable header lines
+;(setq helm-display-header-line nil)
+;(set-face-attribute 'helm-source-header nil :height 0.1)
+
+;; fixed helm window size (approx 1/3 of screen)
+(helm-autoresize-mode t)
+(setq helm-autoresize-max-height 33)
+(setq helm-autoresize-min-height 33)
+
+;(setq helm-split-window-in-side-p nil)
+
 (provide 'microamp-helm)
