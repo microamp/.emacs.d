@@ -120,9 +120,9 @@
 (set-keyboard-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 
-;; browse url using conkeror
+;; browse url using firefox
 (setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program "conkeror")
+      browse-url-generic-program "firefox")
 
 ;; dired+ for reusing dired buffers
 (toggle-diredp-find-file-reuse-dir t)
@@ -193,18 +193,25 @@
 ;; alternative bindings to C-x 0, C-x 1, C-x 2 and C-x 3
 (define-key global-map (kbd "C-x q") 'delete-window)
 (define-key global-map (kbd "C-x l") 'delete-other-windows)
-(define-key global-map (kbd "C-x w") 'split-window-below)
-(define-key global-map (kbd "C-x v") 'split-window-right)
 
 ;; focus the new window after split
-;(global-set-key "\C-x2" (lambda ()
-;                          (interactive)
-;                          (split-window-below)
-;                          (other-window 1)))
-;(global-set-key "\C-x3" (lambda ()
-;                          (interactive)
-;                          (split-window-right)
-;                          (other-window 1)))
+(global-set-key "\C-xw" (lambda ()
+                          (interactive)
+                          (split-window-below)
+                          (other-window 1)))
+(global-set-key "\C-xv" (lambda ()
+                          (interactive)
+                          (split-window-right)
+                          (other-window 1)))
+
+;; magit keybindings
+(define-key global-map (kbd "C-c m s") 'magit-status)
+(define-key global-map (kbd "C-c m l") 'magit-log)
+(define-key global-map (kbd "C-c m b m") 'magit-branch-manager)
+
+;; scroll to top when magit section is expanded
+(defun magit-toggle-scroll-to-top () (recenter-top-bottom 0))
+(advice-add 'magit-toggle-section :after #'magit-toggle-scroll-to-top)
 
 ;; vi-style C-e/C-y
 (defun vi-style-c-e (n)
