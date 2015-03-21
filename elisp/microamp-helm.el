@@ -90,6 +90,6 @@
 (setq helm-autoresize-max-height 33)
 (setq helm-autoresize-min-height 33)
 
-;(setq helm-split-window-in-side-p nil)
+;(setq helm-split-window-in-side-p t)
 
 (provide 'microamp-helm)

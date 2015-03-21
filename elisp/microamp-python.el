@@ -44,6 +44,9 @@
 (add-hook 'python-mode-hook
           (lambda () (local-set-key (kbd "C-c C-p") 'run-python)))
 
+(add-hook 'python-mode-hook
+          (lambda () (local-set-key (kbd "C-c f m") 'flymake-mode)))
+
 (eval-after-load "python"
   '(progn
      (define-key python-mode-map (kbd "C-c C-d") 'helm-pydoc)))

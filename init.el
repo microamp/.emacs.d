@@ -101,16 +101,16 @@
 (setq emacs-dir "~/.emacs.d")
 (setq custom-lib-dir "elisp")
 
-(menu-bar-mode -1)  ;; hide menu bar
-(tool-bar-mode -1)  ;; hide tool bar
+(menu-bar-mode -1) ;; hide menu bar
+(tool-bar-mode -1) ;; hide tool bar
 
-(blink-cursor-mode t)  ;; make cursor blink
+(blink-cursor-mode t) ;; make cursor blink
 
-(set-default-font "Terminus-8")  ;; default font
+(set-default-font "Terminus-8") ;; default font
 
-(setq visible-bell nil)  ;; turn visible bell off
+(setq visible-bell nil) ;; turn visible bell off
 
-(add-hook 'dired-mode-hook '(lambda () (dired-hide-details-mode -1)))  ;; show details
+(add-hook 'dired-mode-hook '(lambda () (dired-hide-details-mode -1))) ;; show details
 
 ;; /usr/local/bin added to exec-path
 (setq exec-path (append exec-path '("/usr/local/bin")))
