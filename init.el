@@ -237,6 +237,9 @@
    (lambda ()
      (setq tab-width 2))))
 
+;; two spaces for indentation (js mode)
+(setq js-indent-level 2)
+
 ;; load custom elisp libraries
 (add-to-list 'load-path (concat emacs-dir "/" custom-lib-dir))
 (load-library "microamp-chat")
