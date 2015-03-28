@@ -36,6 +36,7 @@
     google-this
     haskell-mode
     helm
+    helm-ag
     helm-descbinds
     helm-projectile
     helm-pydoc
@@ -107,6 +108,12 @@
 (blink-cursor-mode t) ;; make cursor blink
 
 (set-default-font "Terminus-8") ;; default font
+
+;; fix messed up keybindings for emacs-mac-port
+(when (equal system-type 'darwin)
+  (setq mac-option-modifier 'meta)
+  (setq mac-command-modifier 'super)
+  (setq mac-function-modifier 'hyper))
 
 (setq visible-bell nil) ;; turn visible bell off
 

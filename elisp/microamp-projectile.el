@@ -13,6 +13,7 @@
 ;; projectile-find-file ("C-c p f")
 
 ;; helm-projectile-grep ("C-c p s g")
+;; helm-projectile-ag ("C-c p s s")
 
 ;; projectile-dired ("C-c p D")
 
