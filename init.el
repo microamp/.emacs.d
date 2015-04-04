@@ -29,6 +29,7 @@
     flymake-cursor
     flymake-easy
     flymake-python-pyflakes
+    geiser
     go-autocomplete
     go-eldoc
     go-mode
@@ -250,11 +251,11 @@
 ;; load custom elisp libraries
 (add-to-list 'load-path (concat emacs-dir "/" custom-lib-dir))
 (load-library "microamp-chat")
+(load-library "microamp-clojure")
 (load-library "microamp-colours")
 (load-library "microamp-elixir")
 (load-library "microamp-haskell")
 (load-library "microamp-helm")
-(load-library "microamp-lisp")
 (load-library "microamp-mail")
 (load-library "microamp-mode-line")
 (load-library "microamp-ocaml")
@@ -262,4 +263,5 @@
 (load-library "microamp-presentation")
 (load-library "microamp-projectile")
 (load-library "microamp-python")
+(load-library "microamp-racket")
 (load-library "microamp-shell")
