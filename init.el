@@ -62,6 +62,7 @@
     nodejs-repl
     org
     ox-reveal
+    paradox
     paredit
     projectile
     racket-mode
@@ -98,6 +99,7 @@
 (require 'helm-config)
 (require 'highlight-parentheses)
 ;(require 'ido)
+(require 'paradox)
 (require 'rainbow-delimiters)
 
 (setq emacs-dir "~/.emacs.d")
@@ -137,6 +139,12 @@
 
 ;; y/n instead of yes/no
 (defalias 'yes-or-no-p 'y-or-n-p)
+
+;; show github stars in paradox
+(setq paradox-github-token t)
+(define-key global-map (kbd "C-c r p") (lambda ()
+                                         (interactive)
+                                         (paradox-list-packages nil)))
 
 ;; dired-rainbow settings
 (dired-rainbow-define media "#BC8383" ("mp3" "mp4" "MP3" "MP4" "avi" "mpg" "flv" "ogg"))
