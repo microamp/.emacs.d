@@ -54,6 +54,7 @@
     lfe-mode
     load-theme-buffer-local
     magit
+    magit-gitflow
     merlin
     mew
     monky
@@ -98,9 +99,10 @@
 (require 'dired-rainbow)
 (require 'helm-config)
 (require 'highlight-parentheses)
-;(require 'ido)
+(require 'magit-gitflow)
 (require 'paradox)
 (require 'rainbow-delimiters)
+;(require 'ido)
 
 (setq emacs-dir "~/.emacs.d")
 (setq custom-lib-dir "elisp")
@@ -228,6 +230,15 @@
 ;; scroll to top when magit section is expanded
 (defun magit-toggle-scroll-to-top () (recenter-top-bottom 0))
 (advice-add 'magit-toggle-section :after #'magit-toggle-scroll-to-top)
+
+;; turn on gitflow
+(add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
+
+;; turn off auto-revert
+(setq magit-auto-revert-mode nil)
+
+;; magit version: 1.4.0
+(setq magit-last-seen-setup-instructions "1.4.0")
 
 ;; vi-style C-e/C-y
 (defun vi-style-c-e (n)
