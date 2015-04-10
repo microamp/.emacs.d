@@ -1,8 +1,5 @@
 (require 'magit-gitflow)
 
-;; gitflow on
-(add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
-
 ;; magit keybindings
 (define-key global-map (kbd "C-c m s") 'magit-status)
 (define-key global-map (kbd "C-c m l") 'magit-log)

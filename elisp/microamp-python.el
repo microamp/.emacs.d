@@ -51,11 +51,6 @@
   '(progn
      (define-key python-mode-map (kbd "C-c C-d") 'helm-pydoc)))
 
-;; shortcut to switch to *Python* buffer
-(define-key global-map (kbd "C-c C-p") (lambda ()
-                                         (interactive)
-                                         (switch-to-buffer "*Python*")))
-
 ;; python hooks
 (add-hook 'python-mode-hook 'fci-mode)
 (add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
