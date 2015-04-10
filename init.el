@@ -228,6 +228,11 @@
 (global-set-key "\M-n" 'vi-style-c-e)
 (global-set-key "\M-p" 'vi-style-c-y)
 
+;; shortcut to switch to *scratch* buffer
+(define-key global-map (kbd "M-s") (lambda ()
+                                     (interactive)
+                                     (switch-to-buffer "*scratch*")))
+
 ;; w3m keybindings
 (add-hook 'w3m-mode-hook
           (lambda () (local-set-key (kbd "M-n") 'w3m-scroll-up)))
