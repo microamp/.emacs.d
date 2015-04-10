@@ -46,7 +46,6 @@
     highlight-parentheses
     htmlize
     hy-mode
-    ;ido-load-library
     ipython
     jabber
     jedi
@@ -99,10 +98,8 @@
 (require 'dired-rainbow)
 (require 'helm-config)
 (require 'highlight-parentheses)
-(require 'magit-gitflow)
 (require 'paradox)
 (require 'rainbow-delimiters)
-;(require 'ido)
 
 (setq emacs-dir "~/.emacs.d")
 (setq custom-lib-dir "elisp")
@@ -176,9 +173,6 @@
 ;; highlight current line
 (global-hl-line-mode t)
 
-;; ido
-;(ido-mode nil)
-
 ;; electric-pair
 (electric-pair-mode t)
 
@@ -222,24 +216,6 @@
                           (split-window-right)
                           (other-window 1)))
 
-;; magit keybindings
-(define-key global-map (kbd "C-c m s") 'magit-status)
-(define-key global-map (kbd "C-c m l") 'magit-log)
-(define-key global-map (kbd "C-c m b m") 'magit-branch-manager)
-
-;; scroll to top when magit section is expanded
-(defun magit-toggle-scroll-to-top () (recenter-top-bottom 0))
-(advice-add 'magit-toggle-section :after #'magit-toggle-scroll-to-top)
-
-;; turn on gitflow
-(add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
-
-;; turn off auto-revert
-(setq magit-auto-revert-mode nil)
-
-;; magit version: 1.4.0
-(setq magit-last-seen-setup-instructions "1.4.0")
-
 ;; vi-style C-e/C-y
 (defun vi-style-c-e (n)
   (interactive "p")
@@ -275,6 +251,7 @@
 (load-library "microamp-elixir")
 (load-library "microamp-haskell")
 (load-library "microamp-helm")
+(load-library "microamp-magit")
 (load-library "microamp-mail")
 (load-library "microamp-mode-line")
 (load-library "microamp-ocaml")
