@@ -248,6 +248,14 @@
 ;; two spaces for indentation (js mode)
 (setq js-indent-level 2)
 
+;; "if you think paredit is not for you then you need to become the kind of person that paredit is for."
+(autoload 'enable-paredit-mode "paredit" t)
+(add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
+(add-hook 'eval-expression-minibuffer-setup-hook 'enable-paredit-mode)
+(add-hook 'ielm-mode-hook 'enable-paredit-mode)
+(add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode)
+(add-hook 'lisp-mode-hook 'enable-paredit-mode)
+
 ;; load custom elisp libraries
 (add-to-list 'load-path (concat emacs-dir "/" custom-lib-dir))
 (load-library "microamp-chat")
