@@ -229,9 +229,9 @@
 (global-set-key "\M-p" 'vi-style-c-y)
 
 ;; shortcut to switch to *scratch* buffer
-(define-key global-map (kbd "C-c C-s") (lambda ()
-                                         (interactive)
-                                         (switch-to-buffer "*scratch*")))
+(define-key global-map (kbd "C-x s") (lambda ()
+                                       (interactive)
+                                       (switch-to-buffer "*scratch*")))
 
 ;; w3m keybindings
 (add-hook 'w3m-mode-hook

@@ -30,7 +30,6 @@
           (lambda () (local-set-key (kbd "C-l") 'clear-shell)))
 
 ;; map C-x s to open (multi-)eshell
-(define-key global-map (kbd "C-x s") 'eshell)
 (define-key global-map (kbd "M-SPC") 'eshell)
 
 ;; preserve M-n/M-p
