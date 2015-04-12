@@ -7,10 +7,11 @@
 
 ;; custom colours
 (custom-set-faces
- '(hl-line ((t (:background "gray30"))))
+ '(region ((t (:background "#5d7f8c"))))
+ '(hl-line ((t (:background "gray35"))))
  '(linum ((t (:background "black" :foreground "gray50")))))
 
-(set-cursor-color "#777777")  ;; cursor colour
+(set-cursor-color "#999999") ;; point colour
 
 ;; use same theme/font for dired-mode
 (setq font-lock-maximum-decoration (quote ((dired-mode) (t . t))))
