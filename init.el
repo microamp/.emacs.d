@@ -34,6 +34,7 @@
     go-eldoc
     go-mode
     go-play
+    god-mode
     google-this
     haskell-mode
     helm
@@ -262,7 +263,7 @@
 (load-library "microamp-clojure")
 (load-library "microamp-colours")
 (load-library "microamp-elixir")
-(load-library "microamp-haskell")
+(load-library "microamp-god-mode")
 (load-library "microamp-helm")
 (load-library "microamp-magit")
 (load-library "microamp-mail")
