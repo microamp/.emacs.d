@@ -50,7 +50,6 @@
     ipython
     jabber
     jedi
-    ;jedi-direx
     lfe-mode
     load-theme-buffer-local
     magit
@@ -67,15 +66,11 @@
     paredit
     projectile
     racket-mode
-    rainbow-delimiters
     rcirc-color
     rcirc-notify
     restclient
     ruby-mode
     sml-mode
-    ;starter-kit
-    ;starter-kit-eshell
-    ;starter-kit-lisp
     tuareg
     twittering-mode
     utop
@@ -100,7 +95,7 @@
 (require 'helm-config)
 (require 'highlight-parentheses)
 (require 'paradox)
-(require 'rainbow-delimiters)
+(require 'paren)
 
 (setq emacs-dir "~/.emacs.d")
 (setq custom-lib-dir "elisp")
@@ -178,15 +173,11 @@
 (electric-pair-mode t)
 
 ;; programming mode hooks
-(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 (add-hook 'prog-mode-hook 'linum-mode)
 
-;; highlight-parentheses
-(define-globalized-minor-mode global-highlight-parentheses-mode
-  highlight-parentheses-mode
-  (lambda ()
-    (highlight-parentheses-mode t)))
-(global-highlight-parentheses-mode t)
+;; highlight matching parens
+(show-paren-mode 1)
+(setq show-paren-style 'parenthesis)
 
 ;; map C-c v to eval-buffer
 (define-key global-map (kbd "C-c v") 'eval-buffer)

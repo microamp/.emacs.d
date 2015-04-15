@@ -7,11 +7,12 @@
 
 ;; custom colours
 (custom-set-faces
- '(region ((t (:background "#5d7f8c"))))
- '(hl-line ((t (:background "gray35"))))
- '(linum ((t (:background "black" :foreground "gray50")))))
+ '(hl-line ((t (:background "gray30"))))
+ '(linum ((t (:background "black" :foreground "gray50"))))
+ '(region ((t (:background "#9ece9e" :foreground "#1f1f1f"))))
+ '(show-paren-match ((t (:background "#1f1f1f" :foreground "#9ece9e" :weight bold)))))
 
-(set-cursor-color "#999999") ;; point colour
+(set-cursor-color "gray60") ;; point colour
 
 ;; use same theme/font for dired-mode
 (setq font-lock-maximum-decoration (quote ((dired-mode) (t . t))))
