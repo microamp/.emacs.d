@@ -70,6 +70,7 @@
     rcirc-notify
     restclient
     ruby-mode
+    smartparens
     sml-mode
     tuareg
     twittering-mode
@@ -169,9 +170,6 @@
 ;; highlight current line
 (global-hl-line-mode t)
 
-;; electric-pair
-(electric-pair-mode t)
-
 ;; programming mode hooks
 (add-hook 'prog-mode-hook 'linum-mode)
 
@@ -266,3 +264,4 @@
 (load-library "microamp-python")
 (load-library "microamp-racket")
 (load-library "microamp-shell")
+(load-library "microamp-smartparens")
