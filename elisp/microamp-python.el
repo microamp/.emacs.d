@@ -12,11 +12,10 @@
 ;(setq py-shell-switch-buffers-on-execute-p t)
 ;(setq py-switch-buffers-on-execute-p t)
 
-;; run ipython inside shell
+;; ipython is the shell to go
 (setq python-shell-interpreter "ipython")
-(define-key global-map (kbd "C-x I") 'python-shell-switch-to-shell)
 
-;; fill column indicator
+;; vertical line to indicate column width limit (pep8)
 (setq-default fci-rule-column 79)
 (setq-default fci-rule-color "#F0DFAF")
 

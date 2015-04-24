@@ -5,6 +5,8 @@
 (define-key global-map (kbd "C-c m l") 'magit-log)
 (define-key global-map (kbd "C-c m b m") 'magit-branch-manager)
 (define-key global-map (kbd "C-c m f l") 'magit-file-log)
+(define-key global-map (kbd "C-c m b l") 'magit-blame-mode)
+(define-key global-map (kbd "C-c m a") 'vc-annotate)
 
 ;; scroll to top when magit section is expanded
 (defun magit-toggle-scroll-to-top () (recenter-top-bottom 0))
