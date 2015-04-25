@@ -36,6 +36,7 @@
     go-play
     god-mode
     google-this
+    guide-key
     haskell-mode
     helm
     helm-ag
@@ -92,6 +93,7 @@
 
 (require 'dired+)
 (require 'dired-rainbow)
+(require 'guide-key)
 (require 'helm-config)
 (require 'highlight-parentheses)
 (require 'paradox)
@@ -236,6 +238,19 @@
 
 ;; two spaces for indentation (js mode)
 (setq js-indent-level 2)
+
+;; guide-key settings
+(setq guide-key/guide-key-sequence '("C-x" "C-c"))
+(setq guide-key/idle-delay 1.0)
+(setq guide-key/recursive-key-sequence-flag t)
+
+(defun guide-key/my-hook-function-for-org-mode ()
+  (guide-key/add-local-guide-key-sequence "C-c")
+  (guide-key/add-local-guide-key-sequence "C-c C-x")
+  (guide-key/add-local-highlight-command-regexp "org-"))
+(add-hook 'org-mode-hook 'guide-key/my-hook-function-for-org-mode)
+
+(guide-key-mode 1)
 
 ;; load custom elisp libraries
 (add-to-list 'load-path (concat emacs-dir "/" custom-lib-dir))
