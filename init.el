@@ -18,6 +18,7 @@
     color-theme
     color-theme-buffer-local
     company
+    darktooth-theme
     dired+
     dired-rainbow
     dired-toggle-sudo

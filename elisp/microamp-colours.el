@@ -3,7 +3,8 @@
 (require 'load-theme-buffer-local)
 
 ;; colour theme
-(load-theme 'zenburn t)
+;(load-theme 'zenburn t)
+(load-theme 'darktooth t)
 
 ;; custom colours
 (custom-set-faces
