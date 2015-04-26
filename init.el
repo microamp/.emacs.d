@@ -105,6 +105,8 @@
 (setq emacs-dir "~/.emacs.d")
 (setq custom-lib-dir "elisp")
 
+(setq on-os-x? (equal system-type 'darwin))
+
 (menu-bar-mode -1) ;; hide menu bar
 (tool-bar-mode -1) ;; hide tool bar
 
@@ -112,8 +114,8 @@
 
 (set-default-font "Terminus-8") ;; default font
 
-;; fix messed up keybindings for emacs-mac-port
-(when (equal system-type 'darwin)
+;; fix messed up keybindings if on os x (emacs-mac-port)
+(when on-os-x?
   (setq mac-option-modifier 'meta)
   (setq mac-command-modifier 'super)
   (setq mac-function-modifier 'hyper))
@@ -148,12 +150,7 @@
 
 ;; dired-rainbow settings
 (dired-rainbow-define media "#BC8383" ("mp3" "mp4" "MP3" "MP4" "avi" "mpg" "flv" "ogg"))
-(dired-rainbow-define elisp "#DFAF8F" ("el"))
-(dired-rainbow-define python "#F0DFAF" ("py"))
-(dired-rainbow-define go "#F0DFAF" ("go"))
-(dired-rainbow-define javascript "#F0DFAF" ("js"))
-(dired-rainbow-define clojure "#F0DFAF" ("clj"))
-(dired-rainbow-define elixir "#F0DFAF" ("exs" "ex"))
+(dired-rainbow-define elisp "#DFAF8F" ("clj" "el" "ex" "exs" "go" "js" "py"))
 
 ;; disable automatic scrolling/re-centering
 (setq-default scroll-step 1
@@ -243,7 +240,9 @@
 (setq js-indent-level 2)
 
 ;; guide-key settings
-(setq guide-key/guide-key-sequence '("C-x" "C-c"))
+(setq guide-key/guide-key-sequence '("C-x"
+                                     "C-c"
+                                     "C-h"))
 (setq guide-key/idle-delay 1.0)
 (setq guide-key/recursive-key-sequence-flag t)
 
