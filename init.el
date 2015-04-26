@@ -27,6 +27,7 @@
     epc
     erc-hl-nicks
     fill-column-indicator
+    find-file-in-project
     flymake-cursor
     flymake-easy
     flymake-python-pyflakes
@@ -73,6 +74,7 @@
     ruby-mode
     smartparens
     sml-mode
+    swiper-helm
     tuareg
     twittering-mode
     utop
