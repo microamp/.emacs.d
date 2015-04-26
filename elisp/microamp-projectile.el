@@ -13,9 +13,8 @@
 ;; caching
 (setq projectile-enable-caching t)
 
-;; projectile-find-file ("C-c p f")
-
-(define-key global-map (kbd "C-c p s f") 'find-file-in-project)
+;; `find-file-in-project` replacing `helm-projectile-find-file`
+(define-key projectile-mode-map (kbd "C-c p f") 'find-file-in-project)
 
 ;; helm-projectile-grep ("C-c p s g")
 ;; helm-projectile-ag ("C-c p s s")
