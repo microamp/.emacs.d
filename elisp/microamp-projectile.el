@@ -13,9 +13,6 @@
 ;; caching
 (setq projectile-enable-caching t)
 
-;; `find-file-in-project` replacing `helm-projectile-find-file`
-(define-key projectile-mode-map (kbd "C-c p f") 'find-file-in-project)
-
 ;; helm-projectile-grep ("C-c p s g")
 ;; helm-projectile-ag ("C-c p s s")
 
@@ -25,5 +22,8 @@
 
 ;; helm integration on
 (helm-projectile-on)
+
+;; `find-file-in-project` replacing `helm-projectile-find-file`
+(define-key projectile-mode-map (kbd "C-c p f") 'find-file-in-project)
 
 (provide 'microamp-projectile)
