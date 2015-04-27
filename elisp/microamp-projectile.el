@@ -23,7 +23,9 @@
 ;; helm integration on
 (helm-projectile-on)
 
-;; `find-file-in-project` replacing `helm-projectile-find-file`
+;; `find-file-in-project` by default
 (define-key projectile-mode-map (kbd "C-c p f") 'find-file-in-project)
+
+(define-key projectile-mode-map (kbd "C-c p s f") 'helm-projectile-find-file)
 
 (provide 'microamp-projectile)

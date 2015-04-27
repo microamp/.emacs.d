@@ -59,11 +59,19 @@
 (add-hook 'cider-repl-mode-hook #'company-mode)
 
 ; paredit
-(add-hook 'cider-mode-hook #'paredit-mode)
-(add-hook 'cider-repl-mode-hook #'paredit-mode)
+;(add-hook 'cider-mode-hook #'paredit-mode)
+;(add-hook 'cider-repl-mode-hook #'paredit-mode)
 
 ; rainbow delimiters
-(add-hook 'cider-mode-hook #'rainbow-delimiters-mode)
-(add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode)
+;(add-hook 'cider-mode-hook #'rainbow-delimiters-mode)
+;(add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode)
+
+(defun cider-namespace-refresh ()
+  (interactive)
+  (cider-interactive-eval
+   "(require 'clojure.tools.namespace.repl)
+    (clojure.tools.namespace.repl/refresh)"))
+
+(define-key clojure-mode-map (kbd "C-c M-r") 'cider-namespace-refresh)
 
 (provide 'microamp-clojure)
