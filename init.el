@@ -66,6 +66,7 @@
     org
     ox-reveal
     paradox
+    powerline
     projectile
     racket-mode
     rcirc-color
