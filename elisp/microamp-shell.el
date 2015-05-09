@@ -1,4 +1,5 @@
 (require 'bash-completion)
+(require 'nyan-prompt)
 
 ;; turn on auto completion for bash
 (bash-completion-setup)
@@ -37,5 +38,8 @@
           (lambda () (local-set-key (kbd "M-n") 'eshell-previous-matching-input-from-input)))
 (add-hook 'eshell-mode-hook
           (lambda () (local-set-key (kbd "M-p") 'eshell-next-matching-input-from-input)))
+
+;; nyan-prompt
+(add-hook 'eshell-load-hook 'nyan-prompt-enable)
 
 (provide 'microamp-shell)

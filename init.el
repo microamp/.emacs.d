@@ -63,6 +63,7 @@
     mpc
     multi-eshell
     nodejs-repl
+    nyan-prompt
     org
     ox-reveal
     paradox
