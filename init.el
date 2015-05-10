@@ -116,6 +116,8 @@
 
 (blink-cursor-mode t) ;; make cursor blink
 
+(global-auto-revert-mode t) ;; refresh buffers when changed on disk
+
 (set-default-font "Terminus-8") ;; default font
 
 ;; fix messed up keybindings if on os x (emacs-mac-port)
