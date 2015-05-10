@@ -97,6 +97,7 @@
     (when (not (package-installed-p p))
       (package-install p))))
 
+(require 'auto-complete-config)
 (require 'calfw)
 (require 'dired+)
 (require 'dired-rainbow)
@@ -117,6 +118,9 @@
 (blink-cursor-mode t) ;; make cursor blink
 
 (global-auto-revert-mode t) ;; refresh buffers when changed on disk
+
+(ac-config-default) ;; auto-completion on!
+(setq ac-auto-show-menu nil) ;; but with no popup!
 
 (set-default-font "Terminus-8") ;; default font
 
