@@ -24,7 +24,12 @@
 (helm-projectile-on)
 
 ;; `find-file-in-project` by default
-(define-key projectile-mode-map (kbd "C-c p f") 'find-file-in-project)
+(defun ff-in-p ()
+  (interactive)
+  (setq ivy-height (/ (frame-height) 3))
+  (ffip))
+
+(define-key projectile-mode-map (kbd "C-c p f") 'ff-in-p)
 
 (define-key projectile-mode-map (kbd "C-c p s f") 'helm-projectile-find-file)
 
