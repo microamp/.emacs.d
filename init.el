@@ -13,6 +13,7 @@
     auto-complete
     bash-completion
     bookmark+
+    calfw
     cider
     clojure-mode
     color-theme
@@ -96,6 +97,7 @@
     (when (not (package-installed-p p))
       (package-install p))))
 
+(require 'calfw)
 (require 'dired+)
 (require 'dired-rainbow)
 (require 'guide-key)
