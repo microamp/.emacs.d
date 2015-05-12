@@ -33,6 +33,7 @@
     flymake-easy
     flymake-python-pyflakes
     geiser
+    git-timemachine
     go-autocomplete
     go-eldoc
     go-mode

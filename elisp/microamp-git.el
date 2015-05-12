@@ -1,3 +1,4 @@
+(require 'git-timemachine)
 (require 'magit-gitflow)
 
 ;; magit keybindings
@@ -7,6 +8,7 @@
 (define-key global-map (kbd "C-c m f l") 'magit-file-log)
 (define-key global-map (kbd "C-c m b l") 'magit-blame-mode)
 (define-key global-map (kbd "C-c m a") 'vc-annotate)
+(define-key global-map (kbd "C-c m t") 'git-timemachine)
 
 ;; scroll to top when magit section is expanded
 (defun magit-toggle-scroll-to-top () (recenter-top-bottom 0))
