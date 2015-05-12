@@ -31,6 +31,7 @@
     find-file-in-project
     flymake-cursor
     flymake-easy
+    flymake-jslint
     flymake-python-pyflakes
     geiser
     git-timemachine
@@ -55,6 +56,7 @@
     ipython
     jabber
     jedi
+    js2-mode
     lfe-mode
     load-theme-buffer-local
     magit
@@ -247,9 +249,6 @@
    (lambda ()
      (setq tab-width 2))))
 
-;; two spaces for indentation (js mode)
-(setq js-indent-level 2)
-
 ;; guide-key settings
 (setq guide-key/guide-key-sequence '("C-x"
                                      "C-c"
@@ -271,9 +270,10 @@
 (load-library "microamp-clojure")
 (load-library "microamp-colours")
 (load-library "microamp-elixir")
+(load-library "microamp-git")
 (load-library "microamp-god-mode")
 (load-library "microamp-helm")
-(load-library "microamp-git")
+(load-library "microamp-js")
 (load-library "microamp-mail")
 (load-library "microamp-mode-line")
 (load-library "microamp-ocaml")
