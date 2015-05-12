@@ -60,7 +60,7 @@
 (defun set-powerline-format ()
   (interactive)
   (powerline-custom-theme)
-  (setq powerline-default-separator 'wave))
+  (setq powerline-default-separator 'arrow))
 
 (set-powerline-format)
 
