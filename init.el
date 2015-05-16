@@ -134,6 +134,7 @@
   (setq mac-function-modifier 'hyper))
 
 (setq visible-bell nil) ;; turn visible bell off
+(setq ring-bell-function nil) ;; turn ring bell off
 
 (add-hook 'dired-mode-hook '(lambda () (dired-hide-details-mode -1))) ;; show details
 

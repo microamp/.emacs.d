@@ -10,6 +10,7 @@
 (add-to-list 'god-exempt-major-modes 'eshell-mode)
 (add-to-list 'god-exempt-major-modes 'magit-mode)
 (add-to-list 'god-exempt-major-modes 'mew-mode)
+(add-to-list 'god-exempt-major-modes 'mew-summary-mode)
 
 (define-key god-local-mode-map (kbd ".") 'repeat)
 (define-key god-local-mode-map (kbd "i") 'god-mode-all)
