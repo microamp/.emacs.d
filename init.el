@@ -47,6 +47,7 @@
     helm-ag
     helm-descbinds
     helm-projectile
+    helm-pt
     helm-pydoc
     help-fns+
     highlight

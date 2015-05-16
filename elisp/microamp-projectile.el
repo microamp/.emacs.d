@@ -1,5 +1,6 @@
-(require 'projectile)
 (require 'helm-projectile)
+(require 'helm-pt)
+(require 'projectile)
 (require 'swiper-helm)
 
 (autoload 'ivy-read "ivy")
@@ -32,5 +33,7 @@
 (define-key projectile-mode-map (kbd "C-c p f") 'ff-in-p)
 
 (define-key projectile-mode-map (kbd "C-c p s f") 'helm-projectile-find-file)
+
+(define-key projectile-mode-map (kbd "C-c p s p") 'helm-projectile-pt)
 
 (provide 'microamp-projectile)
