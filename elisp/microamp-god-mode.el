@@ -5,6 +5,7 @@
 (global-set-key (kbd "<escape>") 'god-mode-all)
 
 ;; no god in the following major modes
+(add-to-list 'god-exempt-major-modes 'compilation-mode)
 (add-to-list 'god-exempt-major-modes 'debugger-mode)
 (add-to-list 'god-exempt-major-modes 'dired-mode)
 (add-to-list 'god-exempt-major-modes 'eshell-mode)
