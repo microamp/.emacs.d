@@ -22,6 +22,11 @@
                                          (delete-other-windows)))
 (define-key global-map (kbd "C-c m t") 'git-timemachine)
 
+;; shortcut to switch to *scratch* buffer
+(define-key global-map (kbd "C-c m p") (lambda ()
+                                         (interactive)
+                                         (switch-to-buffer "*magit-process*")))
+
 ;; scroll to top when magit section is expanded
 (defun magit-toggle-scroll-to-top () (recenter-top-bottom 0))
 (advice-add 'magit-toggle-section :after #'magit-toggle-scroll-to-top)
