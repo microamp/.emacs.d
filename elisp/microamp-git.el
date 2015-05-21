@@ -3,11 +3,23 @@
 
 ;; magit keybindings
 (define-key global-map (kbd "C-c m s") 'magit-status)
-(define-key global-map (kbd "C-c m l") 'magit-log)
-(define-key global-map (kbd "C-c m b m") 'magit-branch-manager)
+(define-key global-map (kbd "C-c m l") (lambda ()
+                                         (interactive)
+                                         (magit-log)
+                                         (delete-other-windows)))
+(define-key global-map (kbd "C-c m b m") (lambda ()
+                                           (interactive)
+                                           (magit-branch-manager)
+                                           (delete-other-windows)))
 (define-key global-map (kbd "C-c m f l") 'magit-file-log)
-(define-key global-map (kbd "C-c m b l") 'magit-blame-mode)
-(define-key global-map (kbd "C-c m a") 'vc-annotate)
+(define-key global-map (kbd "C-c m b l") (lambda ()
+                                           (interactive)
+                                           (magit-blame-mode)
+                                           (delete-other-windows)))
+(define-key global-map (kbd "C-c m a") (lambda ()
+                                         (interactive)
+                                         (vc-annotate (buffer-file-name) "master")
+                                         (delete-other-windows)))
 (define-key global-map (kbd "C-c m t") 'git-timemachine)
 
 ;; scroll to top when magit section is expanded
