@@ -188,6 +188,7 @@
 
 ;; programming mode hooks
 (add-hook 'prog-mode-hook 'linum-mode)
+(add-hook 'prog-mode-hook 'which-func-mode)
 
 ;; highlight matching parens
 (show-paren-mode 1)
@@ -301,4 +302,5 @@
  ;; If there is more than one, they won't work right.
  '(linum ((t (:background "black" :foreground "gray50"))))
  '(region ((t (:background "#9ece9e" :foreground "#1f1f1f"))))
- '(show-paren-match ((t (:background "#1f1f1f" :foreground "#9ece9e" :weight bold)))))
+ '(show-paren-match ((t (:background "#1f1f1f" :foreground "#9ece9e" :weight bold))))
+ '(which-func ((t (:foreground "#83A598")))))
