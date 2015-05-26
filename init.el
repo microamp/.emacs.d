@@ -126,7 +126,9 @@
 (ac-config-default) ;; auto-completion on!
 (setq ac-auto-show-menu nil) ;; but with no popup!
 
-(set-default-font "Terminus-8") ;; default font
+;; default font
+(set-default-font
+ (if on-os-x? "Source code pro-10" "Terminus-8"))
 
 ;; fix messed up keybindings if on os x (emacs-mac-port)
 (when on-os-x?
@@ -135,7 +137,7 @@
   (setq mac-function-modifier 'hyper))
 
 (setq visible-bell nil) ;; turn visible bell off
-(setq ring-bell-function nil) ;; turn ring bell off
+(setq ring-bell-function 'ignore) ;; turn ring bell off
 
 (add-hook 'dired-mode-hook '(lambda () (dired-hide-details-mode -1))) ;; show details
 
