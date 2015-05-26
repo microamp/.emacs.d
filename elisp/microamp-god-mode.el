@@ -19,12 +19,14 @@
 (defun set-colour-god-mode-on ()
   (interactive)
   (set-cursor-color "gray60")
-  (set-face-foreground 'mode-line "gray60"))
+  (set-face-foreground 'mode-line "gray60")
+  (set-face-background 'hl-line "gray20"))
 
 (defun set-colour-god-mode-off ()
   (interactive)
   (set-cursor-color "#fdf4c1")
-  (set-face-foreground 'mode-line "#fdf4c1"))
+  (set-face-foreground 'mode-line "#fdf4c1")
+  (set-face-background 'hl-line "#2b3c44"))
 
 (god-mode-all) ;; god-mode enabled on startup
 (set-colour-god-mode-on)
