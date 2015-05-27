@@ -11,6 +11,7 @@
 (defvar package-list
   '(alchemist
     auto-complete
+    avy
     bash-completion
     bookmark+
     calfw
@@ -248,6 +249,10 @@
 (add-hook 'w3m-mode-hook
           (lambda () (local-set-key (kbd "M-p") 'w3m-scroll-down)))
 
+;; avy shortcuts
+(global-set-key (kbd "C-x g l") 'avy-goto-line)
+(global-set-key (kbd "C-x g w") 'avy-goto-word-0)
+
 ;; set tab width for go mode
 (add-hook 'go-mode-hook
   (function
@@ -302,6 +307,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(avy-lead-face ((t (:background "#FB4933" :foreground "#FFFFC8"))))
+ '(avy-lead-face-0 ((t (:background "#076678" :foreground "#FFFFC8"))))
+ '(avy-lead-face-1 ((t (:background "#B57614" :foreground "#FFFFC8"))))
  '(linum ((t (:background "black" :foreground "gray50"))))
  '(region ((t (:background "#9ece9e" :foreground "#1f1f1f"))))
  '(show-paren-match ((t (:background "#1f1f1f" :foreground "#9ece9e" :weight bold))))
