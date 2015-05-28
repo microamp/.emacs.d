@@ -21,7 +21,7 @@
                                            (delete-other-windows)))
 (define-key global-map (kbd "C-c m a") (lambda ()
                                          (interactive)
-                                         (vc-annotate (buffer-file-name) "master")
+                                         (vc-annotate (buffer-file-name) "HEAD")
                                          (delete-other-windows)))
 (define-key global-map (kbd "C-c m t") 'git-timemachine)
 
