@@ -162,7 +162,7 @@
 
 ;; show github stars in paradox
 (setq paradox-github-token t)
-(define-key global-map (kbd "C-c r p") (lambda ()
+(define-key global-map (kbd "C-x C-p") (lambda ()
                                          (interactive)
                                          (paradox-list-packages nil)))
 
