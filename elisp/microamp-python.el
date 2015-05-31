@@ -1,16 +1,8 @@
 (require 'fill-column-indicator)
 (eval-after-load "flymake" '(require 'flymake-cursor))
 (eval-after-load "flymake" '(require 'flymake-python-pyflakes))
-;(require 'ipython)
 (require 'jedi)
 (require 'helm-pydoc)
-
-;;; use IPython as default shell
-;(setq-default py-shell-name "ipython")
-;
-;;; switch to interpreter after executing code
-;(setq py-shell-switch-buffers-on-execute-p t)
-;(setq py-switch-buffers-on-execute-p t)
 
 ;; ipython is the shell to go
 (setq python-shell-interpreter "ipython")
@@ -35,11 +27,6 @@
 ;; (jedi:tooltip-method '(pos-tip popup))
 (setq jedi:tooltip-method nil)
 
-;; jedi-direx (tree style source code viewer)
-;(eval-after-load "python"
-;  '(define-key python-mode-map "\C-cx" 'jedi-direx:pop-to-buffer))
-;(add-hook 'jedi-mode-hook 'jedi-direx:setup)
-
 (add-hook 'python-mode-hook
           (lambda () (local-set-key (kbd "C-c C-p") 'run-python)))
 
@@ -54,5 +41,7 @@
 (add-hook 'python-mode-hook 'fci-mode)
 (add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
 (add-hook 'python-mode-hook 'jedi:setup)
+
+(define-key python-mode-map (kbd "<backtab>") 'god-mode-all)
 
 (provide 'microamp-python)

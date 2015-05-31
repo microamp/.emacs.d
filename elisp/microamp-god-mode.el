@@ -1,6 +1,6 @@
 (require 'god-mode)
 
-(global-set-key (kbd "<escape>") 'god-mode-all)
+(global-set-key (kbd "<backtab>") 'god-mode-all)
 
 ;; no god in the following major modes
 (add-to-list 'god-exempt-major-modes 'compilation-mode)
@@ -14,7 +14,8 @@
 (add-to-list 'god-exempt-major-modes 'special-mode)
 
 (define-key god-local-mode-map (kbd ".") 'repeat)
-(define-key god-local-mode-map (kbd "i") 'god-mode-all)
+(define-key god-local-mode-map (kbd "i") 'god-mode-all) ;; deactivate
+(define-key god-local-mode-map (kbd "<backtab>") 'ignore) ;; activate
 
 (defun set-colour-god-mode-on ()
   (interactive)
