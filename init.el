@@ -284,7 +284,7 @@
 (load-library "microamp-god-mode")
 (load-library "microamp-helm")
 (load-library "microamp-js")
-(load-library "microamp-mail")
+(load-library "microamp-mew")
 (load-library "microamp-mode-line")
 (load-library "microamp-ocaml")
 (load-library "microamp-org")
