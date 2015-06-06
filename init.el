@@ -28,16 +28,19 @@
     elixir-mode
     epc
     erc-hl-nicks
+    exec-path-from-shell
     fill-column-indicator
     find-file-in-project
     flymake-cursor
     flymake-easy
+    flymake-go
     flymake-jslint
     flymake-python-pyflakes
     geiser
     git-timemachine
     go-autocomplete
     go-eldoc
+    go-errcheck
     go-mode
     go-play
     god-mode
@@ -111,6 +114,8 @@
 (require 'highlight-parentheses)
 (require 'paradox)
 (require 'paren)
+
+(exec-path-from-shell-initialize)
 
 (setq emacs-dir "~/.emacs.d")
 (setq custom-lib-dir "elisp")
@@ -253,12 +258,6 @@
 (global-set-key (kbd "C-x g l") 'avy-goto-line)
 (global-set-key (kbd "C-x g w") 'avy-goto-word-0)
 
-;; set tab width for go mode
-(add-hook 'go-mode-hook
-  (function
-   (lambda ()
-     (setq tab-width 2))))
-
 ;; guide-key settings
 (setq guide-key/guide-key-sequence '("C-x"
                                      "C-c"
@@ -281,6 +280,7 @@
 (load-library "microamp-colours")
 (load-library "microamp-elixir")
 (load-library "microamp-git")
+(load-library "microamp-go")
 (load-library "microamp-god-mode")
 (load-library "microamp-helm")
 (load-library "microamp-js")
