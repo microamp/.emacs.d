@@ -286,6 +286,7 @@
 (load-library "microamp-js")
 (load-library "microamp-mew")
 (load-library "microamp-mode-line")
+(load-library "microamp-mu4e")
 (load-library "microamp-ocaml")
 (load-library "microamp-org")
 (load-library "microamp-presentation")
