@@ -115,12 +115,14 @@
 (require 'paradox)
 (require 'paren)
 
-(exec-path-from-shell-initialize)
-
 (setq emacs-dir "~/.emacs.d")
 (setq custom-lib-dir "elisp")
 
 (setq on-os-x? (equal system-type 'darwin))
+
+(when on-os-x?
+  (exec-path-from-shell-initialize)
+  (exec-path-from-shell-copy-env "GOBIN"))
 
 (menu-bar-mode -1) ;; hide menu bar
 (tool-bar-mode -1) ;; hide tool bar
