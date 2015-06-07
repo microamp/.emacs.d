@@ -18,7 +18,7 @@
         ("/sent"        . ?s)))
 
 ;; a  list of user's e-mail addresses
-(setq mu4e-user-mail-address-list '("sangho.nah@gmail.com")
+(setq mu4e-user-mail-address-list '("sangho.nah@gmail.com"))
 
 ;; when you want to use some external command for text->html
 ;; conversion, e.g. the 'html2text' program
