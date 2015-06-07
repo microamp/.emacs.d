@@ -42,6 +42,8 @@
 ;; use "true" for the command (this is the default)
 (setq mu4e-get-mail-command "offlineimap")
 
+(setq mu4e-update-interval (* 60 2)) ;; update every two minutes
+
 ;; general emacs mail settings; used when composing e-mail
 ;; the non-mu4e-* stuff is inherited from emacs/message-mode
 (setq mu4e-reply-to-address "sangho.nah@gmail.com"
@@ -63,5 +65,7 @@
 
 ;; don't keep message buffers around
 (setq message-kill-buffer-on-exit t)
+
+(global-set-key (kbd "C-x m") 'mu4e)
 
 (provide 'microamp-mu4e)
