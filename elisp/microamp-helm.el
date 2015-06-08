@@ -1,5 +1,6 @@
 (require 'helm)
 (require 'helm-config)
+(require 'helm-dash)
 (require 'helm-eshell)
 (require 'helm-descbinds)
 
@@ -94,5 +95,38 @@
 
 ;; activate path completion
 (setq helm-ff-auto-update-initial-value t)
+
+;; helm-dash settings
+(setq helm-dash-docsets '("AngularJS"
+                          "Bash"
+                          "Clojure"
+                          "Elixir"
+                          "Emacs Lisp"
+                          "Erlang"
+                          "Go"
+                          "Haskell"
+                          "MongoDB"
+                          "OCaml"
+                          "PostgreSQL"
+                          "Python 2"
+                          "Python 3"
+                          "Rust")
+      helm-dash-docsets-path "~/.docsets"
+      helm-dash-min-length 1
+      ;;helm-dash-browser-func 'browse-url
+      helm-dash-browser-func 'eww)
+
+(defun update-docsets (docsets)
+  ;; TODO: run async
+  (dolist (docset docsets)
+    (let ((underscored (replace-regexp-in-string " " "_" docset)))
+      (print (concat "installing/upgrading " underscored "..."))
+      (helm-dash-install-docset underscored))))
+
+(global-set-key (kbd "C-c h d i") 'helm-dash-install-docset)
+(global-set-key (kbd "C-c h d u") (lambda ()
+                                    (interactive)
+                                    (update-docsets helm-dash-docsets)))
+(global-set-key (kbd "C-c h d d") 'helm-dash-at-point)
 
 (provide 'microamp-helm)

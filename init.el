@@ -49,6 +49,7 @@
     haskell-mode
     helm
     helm-ag
+    helm-dash
     helm-descbinds
     helm-projectile
     helm-pt
@@ -73,7 +74,6 @@
     multi-eshell
     nodejs-repl
     nyan-prompt
-    org
     ox-reveal
     paradox
     powerline

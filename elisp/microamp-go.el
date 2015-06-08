@@ -3,6 +3,7 @@
 ;;(require 'flymake-go)
 (require 'go-autocomplete)
 (require 'go-errcheck)
+(require 'helm-dash)
 
 ;; tab = 2 spaces
 (setq go-tab-width 2)
@@ -41,6 +42,11 @@
 (add-hook 'before-save-hook 'gofmt-before-save)
 
 ;;(add-hook 'go-mode-hook 'flymake-go)
+
+;; helm-dash integration
+(add-hook 'go-mode-hook (lambda ()
+                          (interactive)
+                          (setq-local helm-dash-docsets '("Go"))))
 
 (defun go-keybinding-hooks ()
   ;; keybindings: compile
