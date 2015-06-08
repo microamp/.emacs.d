@@ -313,6 +313,7 @@
  '(avy-lead-face ((t (:background "#FB4933" :foreground "#FFFFC8"))))
  '(avy-lead-face-0 ((t (:background "#076678" :foreground "#FFFFC8"))))
  '(avy-lead-face-1 ((t (:background "#B57614" :foreground "#FFFFC8"))))
+ '(flymake-warnline ((t (:background "#4E3D45"))))
  '(linum ((t (:background "#282828" :foreground "#A89984"))))
  '(region ((t (:background "#427B58"))))
  '(which-func ((t (:foreground "#83A598")))))
