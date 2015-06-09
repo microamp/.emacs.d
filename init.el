@@ -285,6 +285,11 @@
   (local-set-key (kbd "M-p") 'vi-style-c-y))
 (add-hook 'eww-mode-hook 'set-eww-keybindings)
 
+;; helm-dash integration
+(add-hook 'emacs-lisp-mode-hook (lambda ()
+                                  (interactive)
+                                  (setq-local helm-dash-docsets '("Emacs Lisp"))))
+
 ;; load custom elisp libraries
 (add-to-list 'load-path (concat emacs-dir "/" custom-lib-dir))
 (load-library "microamp-chat")

@@ -22,4 +22,9 @@
 (add-hook 'js2-mode-hook
           (lambda () (local-set-key (kbd "C-c C-j") 'nodejs-repl)))
 
+;; helm-dash integration
+(add-hook 'js2-mode-hook (lambda ()
+                           (interactive)
+                           (setq-local helm-dash-docsets '("AngularJS"))))
+
 (provide 'microamp-js)
