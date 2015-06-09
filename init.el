@@ -315,5 +315,6 @@
  '(avy-lead-face-1 ((t (:background "#B57614" :foreground "#FFFFC8"))))
  '(flymake-warnline ((t (:background "#4E3D45"))))
  '(linum ((t (:background "#282828" :foreground "#A89984"))))
+ '(mu4e-header-highlight-face ((t (:inherit region :weight bold))))
  '(region ((t (:background "#427B58"))))
  '(which-func ((t (:foreground "#83A598")))))

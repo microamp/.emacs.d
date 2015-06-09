@@ -66,6 +66,9 @@
 ;; don't keep message buffers around
 (setq message-kill-buffer-on-exit t)
 
+;; view content using w3m
+(setq mu4e-html2text-command "w3m -dump -T text/html")
+
 (global-set-key (kbd "C-x m") 'mu4e)
 
 (provide 'microamp-mu4e)
