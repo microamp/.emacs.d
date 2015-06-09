@@ -43,6 +43,9 @@
 
 ;;(add-hook 'go-mode-hook 'flymake-go)
 
+;; eldoc integration
+(add-hook 'go-mode-hook 'go-eldoc-setup)
+
 ;; helm-dash integration
 (add-hook 'go-mode-hook (lambda ()
                           (interactive)
