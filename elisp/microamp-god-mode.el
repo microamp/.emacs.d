@@ -7,6 +7,7 @@
 (add-to-list 'god-exempt-major-modes 'debugger-mode)
 (add-to-list 'god-exempt-major-modes 'dired-mode)
 (add-to-list 'god-exempt-major-modes 'eshell-mode)
+(add-to-list 'god-exempt-major-modes 'eww-mode)
 (add-to-list 'god-exempt-major-modes 'magit-mode)
 (add-to-list 'god-exempt-major-modes 'mew-message-mode)
 (add-to-list 'god-exempt-major-modes 'mew-mode)
