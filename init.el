@@ -275,6 +275,16 @@
 
 (guide-key-mode 1)
 
+;; eww keybindings
+(defun set-eww-keybindings ()
+  (local-unset-key (kbd "M-n"))
+  (local-unset-key (kbd "M-p"))
+  (local-set-key (kbd "j") 'eww-next-bookmark)
+  (local-set-key (kbd "k") 'eww-previous-bookmark)
+  (local-set-key (kbd "M-n") 'vi-style-c-e)
+  (local-set-key (kbd "M-p") 'vi-style-c-y))
+(add-hook 'eww-mode-hook 'set-eww-keybindings)
+
 ;; load custom elisp libraries
 (add-to-list 'load-path (concat emacs-dir "/" custom-lib-dir))
 (load-library "microamp-chat")
