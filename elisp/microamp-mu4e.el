@@ -42,7 +42,7 @@
 ;; use "true" for the command (this is the default)
 (setq mu4e-get-mail-command "offlineimap")
 
-(setq mu4e-update-interval (* 60 2)) ;; update every two minutes
+(setq mu4e-update-interval (* 60 5)) ;; update every five minutes
 
 ;; general emacs mail settings; used when composing e-mail
 ;; the non-mu4e-* stuff is inherited from emacs/message-mode
