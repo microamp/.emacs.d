@@ -11,4 +11,8 @@
 ;; use same theme/font for dired-mode
 (setq font-lock-maximum-decoration (quote ((dired-mode) (t . t))))
 
+;; use a different theme (zenburn) for eww
+(add-hook 'eww-mode-hook
+          (lambda nil (load-theme-buffer-local 'zenburn (current-buffer))))
+
 (provide 'microamp-colours)
