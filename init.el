@@ -290,6 +290,9 @@
                                   (interactive)
                                   (setq-local helm-dash-docsets '("Emacs Lisp"))))
 
+;; activate eldoc-mode
+(add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
+
 ;; load custom elisp libraries
 (add-to-list 'load-path (concat emacs-dir "/" custom-lib-dir))
 (load-library "microamp-chat")
