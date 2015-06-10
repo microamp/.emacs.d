@@ -8,12 +8,15 @@
 ;; ipython is the shell to go
 (setq python-shell-interpreter "ipython")
 
-;; vertical line to indicate column width limit (pep8)
-(setq-default fci-rule-column 79)
+;; vertical line to indicate column width limit (pep8 revised)
+(setq-default fci-rule-column 99)
 (setq-default fci-rule-color "#F0DFAF")
 
 ;; flake8 linting
 (setq flymake-python-pyflakes-executable "flake8")
+
+;; max line length now 99 (pep8 revised)
+(setq flymake-python-pyflakes-extra-arguments '("--max-line-length=99"))
 
 ;; jedi (for auto-completion)
 (setq jedi:setup-keys t)
