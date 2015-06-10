@@ -298,6 +298,11 @@
                            (setq-local helm-dash-docsets '("Bootstrap 3"
                                                            "CSS"))))
 
+;; set html indentation level to 2
+(add-hook 'html-mode-hook (lambda ()
+                            (interactive)
+                            (set (make-local-variable 'sgml-basic-offset 2))))
+
 ;; activate eldoc-mode
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
 
