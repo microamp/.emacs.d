@@ -99,20 +99,25 @@
 ;; helm-dash settings
 (setq helm-dash-docsets '("AngularJS"
                           "Bash"
+                          "Bootstrap 3"
+                          "CSS"
                           "Clojure"
+                          "D3JS"
                           "Elixir"
                           "Emacs Lisp"
                           "Erlang"
                           "Go"
+                          "HTML"
                           "Haskell"
                           "MongoDB"
                           "OCaml"
                           "PostgreSQL"
                           "Python 2"
                           "Python 3"
-                          "Rust")
+                          "Rust"
+                          "jQuery")
       helm-dash-docsets-path "~/.docsets"
-      helm-dash-min-length 1
+      helm-dash-min-length 2
       ;;helm-dash-browser-func 'browse-url
       helm-dash-browser-func 'eww)
 

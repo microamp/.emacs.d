@@ -25,6 +25,9 @@
 ;; helm-dash integration
 (add-hook 'js2-mode-hook (lambda ()
                            (interactive)
-                           (setq-local helm-dash-docsets '("AngularJS"))))
+                           (setq-local helm-dash-docsets '("AngularJS"
+                                                           "Bootstrap 3"
+                                                           "D3JS"
+                                                           "jQuery"))))
 
 (provide 'microamp-js)

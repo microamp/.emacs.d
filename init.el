@@ -289,6 +289,14 @@
 (add-hook 'emacs-lisp-mode-hook (lambda ()
                                   (interactive)
                                   (setq-local helm-dash-docsets '("Emacs Lisp"))))
+(add-hook 'html-mode-hook (lambda ()
+                            (interactive)
+                            (setq-local helm-dash-docsets '("Bootstrap 3"
+                                                            "HTML"))))
+(add-hook 'css-mode-hook (lambda ()
+                           (interactive)
+                           (setq-local helm-dash-docsets '("Bootstrap 3"
+                                                           "CSS"))))
 
 ;; activate eldoc-mode
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
