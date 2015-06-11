@@ -25,7 +25,7 @@
                                          (delete-other-windows)))
 (define-key global-map (kbd "C-c m t") 'git-timemachine)
 
-;; shortcut to switch to *scratch* buffer
+;; shortcut to switch to *magit-process* buffer
 (define-key global-map (kbd "C-c m p") (lambda ()
                                          (interactive)
                                          (switch-to-buffer "*magit-process*")))
