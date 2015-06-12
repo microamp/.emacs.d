@@ -16,6 +16,7 @@
 (puthash :gocode               "github.com/nsf/gocode"                   external-packages)
 (puthash :godef                "code.google.com/p/rog-go/exp/cmd/godef"  external-packages)
 (puthash :goimports            "golang.org/x/tools/cmd/goimports"        external-packages)
+(puthash :gorename             "golang.org/x/tools/cmd/gorename"         external-packages)
 (puthash :oracle               "golang.org/x/tools/cmd/oracle"           external-packages)
 ;; compile command
 (setq command-list '("go build -v"
@@ -32,6 +33,9 @@
 
 ;; load oracle.el
 (load-file "$GOPATH/src/golang.org/x/tools/cmd/oracle/oracle.el")
+
+;; load rename.el
+(load-file "$GOPATH/src/golang.org/x/tools/refactor/rename/rename.el")
 
 ;; set tab width
 (add-hook 'go-mode-hook
@@ -79,6 +83,8 @@
   ;; keybindings: oracle
   (local-set-key (kbd "C-c o s") 'go-oracle-set-scope)
   (local-set-key (kbd "C-c o c") 'go-oracle-callers)
+  ;; keybindings: rename
+  (local-set-key (kbd "C-c C-r") 'go-rename)
   ;; keybindings: navigation (M-]/M-[ to jump to next/previous func)
   (local-set-key (kbd "M-[") 'beginning-of-defun)
   (local-set-key (kbd "M-]") (lambda ()
