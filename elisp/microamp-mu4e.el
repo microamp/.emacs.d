@@ -69,6 +69,12 @@
 ;; view content using w3m
 (setq mu4e-html2text-command "w3m -dump -T text/html")
 
+;; keybindings
+(eval-after-load "mu4e-main-mode"
+  '(progn
+     (define-key mu4e-main-mode-map "q" 'quit-window)
+     (define-key mu4e-main-mode-map "Q" 'mu4e-quit)))
+
 (global-set-key (kbd "C-x m") 'mu4e)
 
 (provide 'microamp-mu4e)
