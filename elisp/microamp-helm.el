@@ -97,27 +97,27 @@
 (setq helm-ff-auto-update-initial-value t)
 
 ;; helm-dash settings
-(setq helm-dash-docsets '("AngularJS"
-                          "Bash"
-                          "Bootstrap 3"
-                          "CSS"
-                          "Clojure"
-                          "D3JS"
-                          "Elixir"
-                          "Emacs Lisp"
-                          "Erlang"
-                          "Go"
-                          "HTML"
-                          "Haskell"
-                          "MongoDB"
-                          "OCaml"
-                          "PostgreSQL"
-                          "Python 2"
-                          "Python 3"
-                          "Rust"
-                          "jQuery")
+(setq helm-dash-all-docsets '("AngularJS"
+                              "Bash"
+                              "Bootstrap 3"
+                              "CSS"
+                              "Clojure"
+                              "D3JS"
+                              "Elixir"
+                              "Emacs Lisp"
+                              "Erlang"
+                              "Go"
+                              "HTML"
+                              "Haskell"
+                              "MongoDB"
+                              "OCaml"
+                              "PostgreSQL"
+                              "Python 2"
+                              "Python 3"
+                              "Rust"
+                              "jQuery")
       helm-dash-docsets-path "~/.docsets"
-      helm-dash-min-length 3
+      helm-dash-min-length 2
       ;;helm-dash-browser-func 'browse-url
       helm-dash-browser-func 'eww)
 

@@ -143,12 +143,6 @@
 (set-default-font
  (if on-os-x? "Source code pro-10" "Terminus-8"))
 
-;; fix messed up keybindings if on os x (emacs-mac-port)
-(when on-os-x?
-  (setq mac-option-modifier 'meta
-        mac-command-modifier 'super
-        mac-function-modifier 'hyper))
-
 ;; turn off visible and ring bells
 (setq visible-bell nil
       ring-bell-function 'ignore)
