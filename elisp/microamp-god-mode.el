@@ -1,6 +1,6 @@
 (require 'god-mode)
 
-(global-set-key (kbd "<backtab>") 'god-mode-all)
+(define-key global-map (kbd "<backtab>") 'god-mode-all)
 
 ;; no god in the following major modes
 (add-to-list 'god-exempt-major-modes 'compilation-mode)

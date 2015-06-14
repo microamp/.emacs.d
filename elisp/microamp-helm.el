@@ -7,7 +7,7 @@
 ;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
 ;; Changed to "C-c h". Note: We must set "C-c h" globally, because we
 ;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
-(global-set-key (kbd "C-c h") 'helm-command-prefix)
+(define-key global-map (kbd "C-c h") 'helm-command-prefix)
 (global-unset-key (kbd "C-x c"))
 
 (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
@@ -26,24 +26,24 @@
 (helm-mode 1)
 
 ;; helm-M-x
-(global-set-key (kbd "M-x") 'helm-M-x)
+(define-key global-map (kbd "M-x") 'helm-M-x)
 (setq helm-M-x-fuzzy-match t) ;; optional fuzzy matching for helm-M-x
 
 ;; helm-show-kill-ring
-(global-set-key (kbd "M-y") 'helm-show-kill-ring)
+(define-key global-map (kbd "M-y") 'helm-show-kill-ring)
 
 ;; helm-mini
-(global-set-key (kbd "C-x b") 'helm-mini)
+(define-key global-map (kbd "C-x b") 'helm-mini)
 (setq helm-buffers-fuzzy-matching t
       helm-recentf-fuzzy-match    t)
 
 ;; helm-find ("C-c h /") (use prefix "C-u" to choose a dir)
 
 ;; helm-do-grep ("C-c h g /") (use prefix "C-u" to do recursive grep)
-(global-set-key (kbd "C-c h g /") 'helm-do-grep)
+(define-key global-map (kbd "C-c h g /") 'helm-do-grep)
 
 ;; helm-find-files
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
+(define-key global-map (kbd "C-x C-f") 'helm-find-files)
 
 ;; helm-ff-do-grep, live grep in Helm ("C-x C-f" -> "C-s" to search (use prefix "C-u C-s" to do recursive grep))
 (when (executable-find "ack-grep")
@@ -55,10 +55,10 @@
       helm-imenu-fuzzy-match    t)
 
 ;; helm-occur
-(global-set-key (kbd "C-c h o") 'helm-occur)
+(define-key global-map (kbd "C-c h o") 'helm-occur)
 
 ;; helm-all-mark-rings
-(global-set-key (kbd "C-c h SPC") 'helm-all-mark-rings)
+(define-key global-map (kbd "C-c h SPC") 'helm-all-mark-rings)
 
 ;; helm-regexp ("C-c h r")
 
@@ -67,7 +67,7 @@
 ;; helm-surfraw ("C-c h s") (NOTE: requires 'surfraw' installed)
 
 ;; helm-google-suggest
-(global-set-key (kbd "C-c h g g") 'helm-google-suggest)
+(define-key global-map (kbd "C-c h g g") 'helm-google-suggest)
 
 ;; helm-resume ("C-c h b")
 
@@ -117,7 +117,7 @@
                           "Rust"
                           "jQuery")
       helm-dash-docsets-path "~/.docsets"
-      helm-dash-min-length 2
+      helm-dash-min-length 3
       ;;helm-dash-browser-func 'browse-url
       helm-dash-browser-func 'eww)
 
@@ -128,10 +128,10 @@
       (print (concat "installing/upgrading " underscored "..."))
       (helm-dash-install-docset underscored))))
 
-(global-set-key (kbd "C-c h d i") 'helm-dash-install-docset)
-(global-set-key (kbd "C-c h d u") (lambda ()
+(define-key global-map (kbd "C-c h d i") 'helm-dash-install-docset)
+(define-key global-map (kbd "C-c h d u") (lambda ()
                                     (interactive)
                                     (update-docsets helm-dash-docsets)))
-(global-set-key (kbd "C-c h d d") 'helm-dash-at-point)
+(define-key global-map (kbd "C-c h d d") 'helm-dash-at-point)
 
 (provide 'microamp-helm)

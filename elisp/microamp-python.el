@@ -5,37 +5,33 @@
 (require 'helm-dash)
 (require 'helm-pydoc)
 
-;; ipython is the shell to go
-(setq python-shell-interpreter "ipython")
+(setq
+ ;; ipython to be default shell
+ python-shell-interpreter "ipython"
+ ;; linting settings
+ python-max-line-length 99
+ flake8-extra-arguments (list (concat "--max-line-length=" (number-to-string python-max-line-length)))
+ flymake-python-pyflakes-executable "flake8"
+ flymake-python-pyflakes-extra-arguments flake8-extra-arguments
+ ;; jedi settings
+ jedi:setup-keys t
+ jedi:complete-on-dot t
+ jedi:install-imenu t
+ jedi:use-shortcuts t
+ jedi:tooltip-method nil
+ ;; dash docsets
+ python-docsets '("Python 2" "Python 3"))
 
-;; vertical line to indicate column width limit (pep8 revised)
-(setq-default fci-rule-column 99)
-(setq-default fci-rule-color "#F0DFAF")
+;; vertical line
+(setq-default
+ fci-rule-column python-max-line-length
+ fci-rule-color "#F0DFAF")
 
-;; flake8 linting
-(setq flymake-python-pyflakes-executable "flake8")
-
-;; max line length now 99 (pep8 revised)
-(setq flymake-python-pyflakes-extra-arguments '("--max-line-length=99"))
-
-;; jedi (for auto-completion)
-(setq jedi:setup-keys t)
-(setq jedi:complete-on-dot t)
 (jedi:install-server)
 
-(setq jedi:install-imenu t)
-
-;; jedi shortcuts
-(setq jedi:use-shortcuts t) ; M-.: jedi:goto-definition, M-,: jedi:goto-definition-pop-marker
-
-;; (jedi:tooltip-method '(pos-tip popup))
-(setq jedi:tooltip-method nil)
-
-(add-hook 'python-mode-hook
-          (lambda () (local-set-key (kbd "C-c C-p") 'run-python)))
-
-(add-hook 'python-mode-hook
-          (lambda () (local-set-key (kbd "C-c f m") 'flymake-mode)))
+(define-key python-mode-map (kbd "C-c C-p") 'run-python)
+(define-key python-mode-map (kbd "C-c f m") 'flymake-mode)
+(define-key python-mode-map (kbd "<backtab>") 'god-mode-all)
 
 (eval-after-load "python"
   '(progn
@@ -45,11 +41,8 @@
 (add-hook 'python-mode-hook 'fci-mode)
 (add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
 (add-hook 'python-mode-hook 'jedi:setup)
-(add-hook 'python-mode-hook (lambda ()
-                              (interactive)
-                              (setq-local helm-dash-docsets '("Python 2"
-                                                              "Python 3"))))
-
-(define-key python-mode-map (kbd "<backtab>") 'god-mode-all)
+(add-hook 'python-mode-hook
+          (lambda ()
+            (setq-local helm-dash-docsets python-docsets)))
 
 (provide 'microamp-python)

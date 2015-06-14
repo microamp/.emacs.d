@@ -18,6 +18,7 @@
       'mew-send-hook))
 
 (add-hook 'mew-message-mode-hook
-          (lambda () (local-set-key (kbd "O") 'mew-browse-url-at-point)))
+          (lambda ()
+            (local-set-key (kbd "O") 'mew-browse-url-at-point)))
 
 (provide 'microamp-mail)

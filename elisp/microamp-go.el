@@ -10,14 +10,13 @@
 ;; goimports in favour of gofmt
 (setq gofmt-command "goimports")
 ;; external dependencies
-(setq external-packages (make-hash-table :test 'equal))
-(puthash :checkers-bot-minimax "github.com/tleyden/checkers-bot-minimax" external-packages)
-(puthash :errcheck             "github.com/kisielk/errcheck"             external-packages)
-(puthash :gocode               "github.com/nsf/gocode"                   external-packages)
-(puthash :godef                "code.google.com/p/rog-go/exp/cmd/godef"  external-packages)
-(puthash :goimports            "golang.org/x/tools/cmd/goimports"        external-packages)
-(puthash :gorename             "golang.org/x/tools/cmd/gorename"         external-packages)
-(puthash :oracle               "golang.org/x/tools/cmd/oracle"           external-packages)
+(setq external-packages '("github.com/tleyden/checkers-bot-minimax"
+                          "github.com/kisielk/errcheck"
+                          "github.com/nsf/gocode"
+                          "code.google.com/p/rog-go/exp/cmd/godef"
+                          "golang.org/x/tools/cmd/goimports"
+                          "golang.org/x/tools/cmd/gorename"
+                          "golang.org/x/tools/cmd/oracle"))
 ;; compile command
 (setq command-list '("go build -v"
                      "go test -v"
@@ -25,11 +24,10 @@
 (setq go-compile-command (mapconcat 'identity command-list " && "))
 
 ;; install external packages via 'go get'
-(maphash (lambda (k v)
-           (let ((command (concat "go get " v)))
-             (print (concat "running " command "..."))
-             (shell-command command)))
-         external-packages)
+(dolist (p external-packages)
+  (let ((command (concat "go get " p)))
+    (message (concat "running '" command "'..."))
+    (shell-command command)))
 
 ;; load oracle.el
 (load-file "$GOPATH/src/golang.org/x/tools/cmd/oracle/oracle.el")
@@ -51,47 +49,50 @@
 (add-hook 'go-mode-hook 'go-eldoc-setup)
 
 ;; helm-dash integration
-(add-hook 'go-mode-hook (lambda ()
-                          (interactive)
-                          (setq-local helm-dash-docsets '("Go"))))
+(add-hook 'go-mode-hook
+          (lambda ()
+            (interactive)
+            (setq-local helm-dash-docsets '("Go"))))
 
 (defun go-keybinding-hooks ()
   ;; keybindings: compile
-  (local-set-key (kbd "C-c C-c") (lambda ()
-                                   (interactive)
-                                   (compile go-compile-command)))
+  (define-key go-mode-map (kbd "C-c C-c")
+    (lambda ()
+      (interactive)
+      (compile go-compile-command)))
   ;; keybindings: imenu
-  (local-set-key (kbd "C-c C-i") 'imenu)
+  (define-key go-mode-map (kbd "C-c C-i") 'imenu)
   ;; keybindings: gofmt/godoc
-  (local-set-key (kbd "C-c C-f") 'gofmt)
-  (local-set-key (kbd "C-c C-d") 'godoc)
+  (define-key go-mode-map (kbd "C-c C-f") 'gofmt)
+  (define-key go-mode-map (kbd "C-c C-d") 'godoc)
   ;; keybindings: imports
-  (local-set-key (kbd "C-c i i") 'go-import-add)
-  (local-set-key (kbd "C-c i c") 'go-remove-unused-imports)
-  (local-set-key (kbd "C-c i g") 'go-goto-imports)
+  (define-key go-mode-map (kbd "C-c i i") 'go-import-add)
+  (define-key go-mode-map (kbd "C-c i c") 'go-remove-unused-imports)
+  (define-key go-mode-map (kbd "C-c i g") 'go-goto-imports)
   ;; keybindings: godef
-  (local-set-key (kbd "C-c d") 'godef-describe)
-  (local-set-key (kbd "M-.") 'godef-jump)
+  (define-key go-mode-map (kbd "C-c d") 'godef-describe)
+  (define-key go-mode-map (kbd "M-.") 'godef-jump)
   (local-unset-key (kbd "C-*"))
-  (local-set-key (kbd "M-,") 'pop-tag-mark)
+  (define-key go-mode-map (kbd "M-,") 'pop-tag-mark)
   ;; keybindings: go playground (go hastebin)
-  (local-set-key (kbd "C-c C-p b") 'go-play-buffer)
-  (local-set-key (kbd "C-c C-p r") 'go-play-region)
-  (local-set-key (kbd "C-c C-p d") 'go-download-play)
+  (define-key go-mode-map (kbd "C-c C-p b") 'go-play-buffer)
+  (define-key go-mode-map (kbd "C-c C-p r") 'go-play-region)
+  (define-key go-mode-map (kbd "C-c C-p d") 'go-download-play)
   ;; keybindings: errcheck
-  (local-set-key (kbd "C-c C-e") 'go-errcheck)
+  (define-key go-mode-map (kbd "C-c C-e") 'go-errcheck)
   ;; keybindings: oracle
-  (local-set-key (kbd "C-c o s") 'go-oracle-set-scope)
-  (local-set-key (kbd "C-c o c") 'go-oracle-callers)
+  (define-key go-mode-map (kbd "C-c o s") 'go-oracle-set-scope)
+  (define-key go-mode-map (kbd "C-c o c") 'go-oracle-callers)
   ;; keybindings: rename
-  (local-set-key (kbd "C-c C-r") 'go-rename)
+  (define-key go-mode-map (kbd "C-c C-r") 'go-rename)
   ;; keybindings: navigation (M-]/M-[ to jump to next/previous func)
-  (local-set-key (kbd "M-[") 'beginning-of-defun)
-  (local-set-key (kbd "M-]") (lambda ()
-                               (interactive)
-                               (end-of-defun)
-                               (end-of-defun)
-                               (beginning-of-defun))))
+  (define-key go-mode-map (kbd "M-[") 'beginning-of-defun)
+  (define-key go-mode-map (kbd "M-]")
+    (lambda ()
+      (interactive)
+      (end-of-defun)
+      (end-of-defun)
+      (beginning-of-defun))))
 
 (add-hook 'go-mode-hook 'go-keybinding-hooks)
 

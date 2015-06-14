@@ -34,7 +34,7 @@
 (rcirc-track-minor-mode 1)
 
 ;; C-c I to connect to irc
-(global-set-key (kbd "C-S-i") 'irc)
+(define-key global-map (kbd "C-S-i") 'irc)
 
 ;; ***** jabber (google chat) *****
 (require 'jabber)

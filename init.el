@@ -115,14 +115,19 @@
 (require 'paradox)
 (require 'paren)
 
-(setq emacs-dir "~/.emacs.d")
-(setq custom-lib-dir "elisp")
+(setq emacs-dir "~/.emacs.d"
+      custom-lib-dir "elisp")
 
 (setq on-os-x? (equal system-type 'darwin))
 
 (when on-os-x?
+  ;; import paths from shell
   (exec-path-from-shell-initialize)
-  (exec-path-from-shell-copy-env "GOBIN"))
+  (exec-path-from-shell-copy-env "GOBIN")
+  ;; fix keybindings (emacs-mac-port)
+  (setq mac-option-modifier 'meta
+        mac-command-modifier 'super
+        mac-function-modifier 'hyper))
 
 (menu-bar-mode -1) ;; hide menu bar
 (tool-bar-mode -1) ;; hide tool bar
@@ -140,14 +145,17 @@
 
 ;; fix messed up keybindings if on os x (emacs-mac-port)
 (when on-os-x?
-  (setq mac-option-modifier 'meta)
-  (setq mac-command-modifier 'super)
-  (setq mac-function-modifier 'hyper))
+  (setq mac-option-modifier 'meta
+        mac-command-modifier 'super
+        mac-function-modifier 'hyper))
 
-(setq visible-bell nil) ;; turn visible bell off
-(setq ring-bell-function 'ignore) ;; turn ring bell off
+;; turn off visible and ring bells
+(setq visible-bell nil
+      ring-bell-function 'ignore)
 
-(add-hook 'dired-mode-hook '(lambda () (dired-hide-details-mode -1))) ;; show details
+(add-hook 'dired-mode-hook
+          '(lambda ()
+             (dired-hide-details-mode -1))) ;; show details
 
 ;; /usr/local/bin added to exec-path
 (setq exec-path (append exec-path '("/usr/local/bin")))
@@ -169,9 +177,10 @@
 
 ;; show github stars in paradox
 (setq paradox-github-token t)
-(define-key global-map (kbd "C-x C-p") (lambda ()
-                                         (interactive)
-                                         (paradox-list-packages nil)))
+(define-key global-map (kbd "C-x C-p")
+  (lambda ()
+    (interactive)
+    (paradox-list-packages nil)))
 
 ;; dired-rainbow settings
 (dired-rainbow-define media "#BC8383" ("mp3" "mp4" "MP3" "MP4" "avi" "mpg" "flv" "ogg"))
@@ -224,14 +233,16 @@
 (define-key global-map (kbd "C-x l") 'delete-other-windows)
 
 ;; focus the new window after split
-(global-set-key "\C-xw" (lambda ()
-                          (interactive)
-                          (split-window-below)
-                          (other-window 1)))
-(global-set-key "\C-xv" (lambda ()
-                          (interactive)
-                          (split-window-right)
-                          (other-window 1)))
+(define-key global-map (kbd "C-x w")
+  (lambda ()
+    (interactive)
+    (split-window-below)
+    (other-window 1)))
+(define-key global-map (kbd "C-x v")
+  (lambda ()
+    (interactive)
+    (split-window-right)
+    (other-window 1)))
 
 ;; vi-style C-e/C-y
 (defun vi-style-c-e (n)
@@ -242,23 +253,29 @@
   (interactive "p")
   (scroll-down n))
 
-(global-set-key "\M-n" 'vi-style-c-e)
-(global-set-key "\M-p" 'vi-style-c-y)
+(define-key global-map (kbd "M-n") 'vi-style-c-e)
+(define-key global-map (kbd "M-p") 'vi-style-c-y)
 
 ;; shortcut to switch to *scratch* buffer
-(define-key global-map (kbd "C-x s") (lambda ()
-                                       (interactive)
-                                       (switch-to-buffer "*scratch*")))
+(define-key global-map (kbd "C-x s")
+  (lambda ()
+    (interactive)
+    (switch-to-buffer "*scratch*")))
 
 ;; w3m keybindings
 (add-hook 'w3m-mode-hook
-          (lambda () (local-set-key (kbd "M-n") 'w3m-scroll-up)))
+          (lambda ()
+            (local-set-key (kbd "M-n") 'w3m-scroll-up)))
 (add-hook 'w3m-mode-hook
-          (lambda () (local-set-key (kbd "M-p") 'w3m-scroll-down)))
+          (lambda ()
+            (local-set-key (kbd "M-p") 'w3m-scroll-down)))
+
+;; calfw keybindings
+(define-key global-map (kbd "C-x c") 'cfw:open-calendar-buffer)
 
 ;; avy shortcuts
-(global-set-key (kbd "C-x g l") 'avy-goto-line)
-(global-set-key (kbd "C-x g w") 'avy-goto-word-0)
+(define-key global-map (kbd "C-x g l") 'avy-goto-line)
+(define-key global-map (kbd "C-x g w") 'avy-goto-word-0)
 
 ;; guide-key settings
 (setq guide-key/guide-key-sequence '("C-x"
@@ -286,22 +303,26 @@
 (add-hook 'eww-mode-hook 'set-eww-keybindings)
 
 ;; helm-dash integration
-(add-hook 'emacs-lisp-mode-hook (lambda ()
-                                  (interactive)
-                                  (setq-local helm-dash-docsets '("Emacs Lisp"))))
-(add-hook 'html-mode-hook (lambda ()
-                            (interactive)
-                            (setq-local helm-dash-docsets '("Bootstrap 3"
-                                                            "HTML"))))
-(add-hook 'css-mode-hook (lambda ()
-                           (interactive)
-                           (setq-local helm-dash-docsets '("Bootstrap 3"
-                                                           "CSS"))))
+(setq
+ emacs-lisp-docsets '("Emacs Lisp")
+ html-docsets '("Bootstrap 3" "HTML")
+ css-docsets '("Bootstrap 3" "CSS"))
+
+(add-hook 'emacs-lisp-mode-hook
+          (lambda ()
+            (setq-local helm-dash-docsets emacs-lisp-docsets)))
+(add-hook 'html-mode-hook
+          (lambda ()
+            (setq-local helm-dash-docsets html-docsets)))
+(add-hook 'css-mode-hook
+          (lambda ()
+            (setq-local helm-dash-docsets css-docsets)))
 
 ;; set html indentation level to 2
-(add-hook 'html-mode-hook (lambda ()
-                            (interactive)
-                            (set (make-local-variable 'sgml-basic-offset 2))))
+(add-hook 'html-mode-hook
+          (lambda ()
+            (interactive)
+            (set (make-local-variable 'sgml-basic-offset 2))))
 
 ;; activate eldoc-mode
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
