@@ -51,7 +51,6 @@
 ;; helm-dash integration
 (add-hook 'go-mode-hook
           (lambda ()
-            (interactive)
             (setq-local helm-dash-docsets '("Go"))))
 
 (defun go-keybinding-hooks ()
@@ -87,12 +86,7 @@
   (define-key go-mode-map (kbd "C-c C-r") 'go-rename)
   ;; keybindings: navigation (M-]/M-[ to jump to next/previous func)
   (define-key go-mode-map (kbd "M-[") 'beginning-of-defun)
-  (define-key go-mode-map (kbd "M-]")
-    (lambda ()
-      (interactive)
-      (end-of-defun)
-      (end-of-defun)
-      (beginning-of-defun))))
+  (define-key go-mode-map (kbd "M-]") 'end-of-defun))
 
 (add-hook 'go-mode-hook 'go-keybinding-hooks)
 

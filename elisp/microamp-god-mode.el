@@ -13,6 +13,7 @@
 (add-to-list 'god-exempt-major-modes 'mew-mode)
 (add-to-list 'god-exempt-major-modes 'mew-summary-mode)
 (add-to-list 'god-exempt-major-modes 'special-mode)
+(add-to-list 'god-exempt-major-modes 'vc-annotate-mode)
 
 (define-key god-local-mode-map (kbd ".") 'repeat)
 (define-key god-local-mode-map (kbd "i") 'god-mode-all) ;; deactivate

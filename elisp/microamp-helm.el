@@ -129,9 +129,10 @@
       (helm-dash-install-docset underscored))))
 
 (define-key global-map (kbd "C-c h d i") 'helm-dash-install-docset)
-(define-key global-map (kbd "C-c h d u") (lambda ()
-                                    (interactive)
-                                    (update-docsets helm-dash-docsets)))
+(define-key global-map (kbd "C-c h d u")
+  (lambda ()
+    (interactive)
+    (update-docsets helm-dash-docsets)))
 (define-key global-map (kbd "C-c h d d") 'helm-dash-at-point)
 
 (provide 'microamp-helm)

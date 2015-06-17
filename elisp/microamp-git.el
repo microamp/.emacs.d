@@ -2,7 +2,11 @@
 (require 'magit-gitflow)
 
 ;; magit keybindings
-(define-key global-map (kbd "C-c m s") 'magit-status)
+(define-key global-map (kbd "C-c m s")
+  (lambda ()
+    (interactive)
+    (delete-other-windows)
+    (magit-status nil)))
 (define-key global-map (kbd "C-c m l")
   (lambda ()
     (interactive)

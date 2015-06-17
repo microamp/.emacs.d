@@ -219,9 +219,6 @@
 (define-key global-map (kbd "C-x n") 'other-window)
 (define-key global-map (kbd "C-x p") 'previous-multiframe-window)
 
-;; map C-. to set-mark-command
-(define-key global-map (kbd "C-.") 'set-mark-command)
-
 ;; alternative bindings to C-x 0, C-x 1, C-x 2 and C-x 3
 (define-key global-map (kbd "C-x q") 'delete-window)
 (define-key global-map (kbd "C-x l") 'delete-other-windows)
@@ -264,8 +261,8 @@
           (lambda ()
             (local-set-key (kbd "M-p") 'w3m-scroll-down)))
 
-;; calfw keybindings
-(define-key global-map (kbd "C-x c") 'cfw:open-calendar-buffer)
+;; calfw alias
+(defalias 'cfw 'cfw:open-calendar-buffer)
 
 ;; avy shortcuts
 (define-key global-map (kbd "C-x g l") 'avy-goto-line)
