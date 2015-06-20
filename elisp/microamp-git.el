@@ -47,7 +47,7 @@
 (add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
 
 ;; turn off auto-revert
-;;(setq magit-auto-revert-mode nil)
+(setq magit-auto-revert-mode nil)
 
 ;; magit version: 1.4.0
 (setq magit-last-seen-setup-instructions "1.4.0")
