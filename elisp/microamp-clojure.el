@@ -75,8 +75,11 @@
 (define-key clojure-mode-map (kbd "C-c M-r") 'cider-namespace-refresh)
 
 ;; helm-dash integration
-(add-hook 'clojure-mode-hook (lambda ()
-                               (interactive)
-                               (setq-local helm-dash-docsets '("Clojure"))))
+(add-hook 'clojure-mode-hook
+          (lambda ()
+            (setq-local helm-dash-docsets '("Clojure"))))
+
+;; shortcut to cheatsheet
+(define-key clojure-mode-map (kbd "C-c h d c") 'clojure-cheatsheet)
 
 (provide 'microamp-clojure)

@@ -16,6 +16,7 @@
     bookmark+
     calfw
     cider
+    clojure-cheatsheet
     clojure-mode
     color-theme
     color-theme-buffer-local
