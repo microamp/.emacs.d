@@ -2,4 +2,4 @@
 
 Photo by Wouter van Oortmerssen
 
-Copyright (C) 2000 Richard Stallman
+[Copyright (C) 2000 Richard Stallman](https://stallman.org/saint.html)
