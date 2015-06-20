@@ -55,35 +55,40 @@
 
 (defun go-keybinding-hooks ()
   ;; keybindings: compile
-  (define-key go-mode-map (kbd "C-c C-c")
+  (if (not (string-match "go" compile-command))
+      (set (make-local-variable 'compile-command)
+           go-compile-command))
+  (define-key go-mode-map (kbd "C-c C-c") 'compile)
+  (define-key go-mode-map (kbd "C-c C-r")
     (lambda ()
       (interactive)
-      (compile go-compile-command)))
+      (shell-command (concat "go run " (buffer-file-name)))))
   ;; keybindings: imenu
-  (define-key go-mode-map (kbd "C-c C-i") 'imenu)
+  (define-key go-mode-map (kbd "C-c C-j") 'imenu)
   ;; keybindings: gofmt/godoc
   (define-key go-mode-map (kbd "C-c C-f") 'gofmt)
   (define-key go-mode-map (kbd "C-c C-d") 'godoc)
   ;; keybindings: imports
-  (define-key go-mode-map (kbd "C-c i i") 'go-import-add)
-  (define-key go-mode-map (kbd "C-c i c") 'go-remove-unused-imports)
-  (define-key go-mode-map (kbd "C-c i g") 'go-goto-imports)
+  (define-key go-mode-map (kbd "C-c C-i i") 'go-import-add)
+  (define-key go-mode-map (kbd "C-c C-i c") 'go-remove-unused-imports)
+  (define-key go-mode-map (kbd "C-c C-i g") 'go-goto-imports)
   ;; keybindings: godef
-  (define-key go-mode-map (kbd "C-c d") 'godef-describe)
+  (define-key go-mode-map (kbd "C-c d") 'godef-describe) ;; redundant because go-eldoc
+  (local-unset-key (kbd "C-j"))
   (define-key go-mode-map (kbd "M-.") 'godef-jump)
   (local-unset-key (kbd "C-*"))
   (define-key go-mode-map (kbd "M-,") 'pop-tag-mark)
-  ;; keybindings: go playground (go hastebin)
+  ;; keybindings: go playground (go pastebin)
   (define-key go-mode-map (kbd "C-c C-p b") 'go-play-buffer)
   (define-key go-mode-map (kbd "C-c C-p r") 'go-play-region)
   (define-key go-mode-map (kbd "C-c C-p d") 'go-download-play)
   ;; keybindings: errcheck
   (define-key go-mode-map (kbd "C-c C-e") 'go-errcheck)
   ;; keybindings: oracle
-  (define-key go-mode-map (kbd "C-c o s") 'go-oracle-set-scope)
-  (define-key go-mode-map (kbd "C-c o c") 'go-oracle-callers)
+  (define-key go-mode-map (kbd "C-c C-o s") 'go-oracle-set-scope)
+  (define-key go-mode-map (kbd "C-c C-o c") 'go-oracle-callers)
   ;; keybindings: rename
-  (define-key go-mode-map (kbd "C-c C-r") 'go-rename)
+  (define-key go-mode-map (kbd "C-c M-r") 'go-rename)
   ;; keybindings: navigation (M-]/M-[ to jump to next/previous func)
   (define-key go-mode-map (kbd "M-[") 'beginning-of-defun)
   (define-key go-mode-map (kbd "M-]") 'end-of-defun))
