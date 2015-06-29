@@ -73,6 +73,7 @@
     monky
     mpc
     multi-eshell
+    neotree
     nodejs-repl
     nyan-prompt
     ox-reveal
@@ -113,6 +114,7 @@
 (require 'guide-key)
 (require 'helm-config)
 (require 'highlight-parentheses)
+(require 'neotree)
 (require 'paradox)
 (require 'paren)
 
@@ -161,6 +163,12 @@
 (prefer-coding-system 'utf-8)
 
 ;; browse url using firefox
+;; neotree settings
+(define-key neotree-mode-map (kbd "o") 'neotree-enter)
+(setq projectile-switch-project-action 'neotree-projectile-action)
+(global-set-key [f8] 'neotree-toggle)
+(setq neo-theme 'ascii)
+
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "firefox")
 
@@ -364,5 +372,8 @@
  '(flymake-warnline ((t (:background "#4E3D45"))))
  '(linum ((t (:background "#282828" :foreground "#A89984"))))
  '(mu4e-header-highlight-face ((t (:inherit region :weight bold))))
+ '(neo-dir-link-face ((t (:foreground "#A89984"))))
+ '(neo-expand-btn-face ((t (:foreground "#FB4933"))))
+ '(neo-file-link-face ((t (:foreground "#FFFFC8"))))
  '(region ((t (:background "#427B58"))))
  '(which-func ((t (:foreground "#83A598")))))
