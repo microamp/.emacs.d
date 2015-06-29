@@ -40,11 +40,13 @@
     geiser
     git-timemachine
     go-autocomplete
+    go-direx
     go-eldoc
     go-errcheck
     go-mode
     go-play
     god-mode
+    golint
     google-this
     guide-key
     haskell-mode
