@@ -30,8 +30,7 @@
 (define-key global-map (kbd "C-c m a")
   (lambda ()
     (interactive)
-    (vc-annotate (buffer-file-name) "HEAD")
-    (delete-other-windows)))
+    (vc-annotate (buffer-file-name) "HEAD")))
 (define-key global-map (kbd "C-c m p")
   (lambda ()
     (interactive)
@@ -46,8 +45,8 @@
 ;; turn on gitflow
 (add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
 
-;; turn off auto-revert
-(setq magit-auto-revert-mode nil)
+;; turn on auto-revert
+(setq magit-auto-revert-mode t)
 
 ;; magit version: 1.4.0
 (setq magit-last-seen-setup-instructions "1.4.0")
