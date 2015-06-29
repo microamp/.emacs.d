@@ -164,12 +164,10 @@
 (set-keyboard-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 
-;; browse url using firefox
 ;; neotree settings
-(define-key neotree-mode-map (kbd "o") 'neotree-enter)
-(setq projectile-switch-project-action 'neotree-projectile-action)
-(global-set-key [f8] 'neotree-toggle)
 (setq neo-theme 'ascii)
+(define-key neotree-mode-map (kbd "o") 'neotree-enter)
+(global-set-key [f8] 'neotree-toggle)
 
 ;; browse url using chrome/firefox
 (setq chrome-on-os-x "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")

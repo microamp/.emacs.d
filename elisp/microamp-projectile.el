@@ -30,12 +30,13 @@
   (setq ivy-height (/ (frame-height) 3))
   (ffip))
 
+;; custom keybindings for projectile
 (define-key projectile-mode-map (kbd "C-c p f") 'ff-in-p)
-
 (define-key projectile-mode-map (kbd "C-c p s f") 'helm-projectile-find-file)
-
 (define-key projectile-mode-map (kbd "C-c p s p") 'helm-projectile-pt)
-
 (define-key projectile-mode-map (kbd "C-c p w") 'projectile-switch-project)
+
+;; neotree integration
+(setq projectile-switch-project-action 'neotree-projectile-action)
 
 (provide 'microamp-projectile)
