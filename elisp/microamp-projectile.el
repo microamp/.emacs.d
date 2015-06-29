@@ -36,4 +36,6 @@
 
 (define-key projectile-mode-map (kbd "C-c p s p") 'helm-projectile-pt)
 
+(define-key projectile-mode-map (kbd "C-c p w") 'projectile-switch-project)
+
 (provide 'microamp-projectile)
