@@ -372,6 +372,7 @@
  '(avy-lead-face-0 ((t (:background "#076678" :foreground "#FFFFC8"))))
  '(avy-lead-face-1 ((t (:background "#B57614" :foreground "#FFFFC8"))))
  '(flymake-warnline ((t (:background "#4E3D45"))))
+ '(go-direx-package ((t (:foreground "#FB4933" :weight bold))))
  '(linum ((t (:background "#282828" :foreground "#A89984"))))
  '(mu4e-header-highlight-face ((t (:inherit region :weight bold))))
  '(neo-dir-link-face ((t (:foreground "#A89984"))))
