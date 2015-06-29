@@ -169,8 +169,10 @@
 (global-set-key [f8] 'neotree-toggle)
 (setq neo-theme 'ascii)
 
+;; browse url using chrome/firefox
+(setq chrome-on-os-x "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
 (setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program "firefox")
+      browse-url-generic-program (if on-os-x? chrome-on-os-x "firefox"))
 
 ;; dired+ for reusing dired buffers
 (toggle-diredp-find-file-reuse-dir t)
