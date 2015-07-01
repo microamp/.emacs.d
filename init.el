@@ -272,6 +272,11 @@
           (lambda ()
             (local-set-key (kbd "M-p") 'w3m-scroll-down)))
 
+;; shortcuts for sql interfaces
+(define-key global-map (kbd "C-x M-s m") 'sql-mysql)
+(define-key global-map (kbd "C-x M-s p") 'sql-postgres)
+(define-key global-map (kbd "C-x M-s s") 'sql-sqlite)
+
 ;; calfw alias
 (defalias 'cfw 'cfw:open-calendar-buffer)
 
