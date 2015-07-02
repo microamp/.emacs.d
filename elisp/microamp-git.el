@@ -10,17 +10,17 @@
 (define-key global-map (kbd "C-c m l")
   (lambda ()
     (interactive)
-    (magit-log)
+    (magit-log-all)
     (delete-other-windows)))
 (define-key global-map (kbd "C-c m b m")
   (lambda ()
     (interactive)
-    (magit-branch-manager)
+    (magit-show-refs-popup)
     (delete-other-windows)))
 (define-key global-map (kbd "C-c m f l")
   (lambda ()
     (interactive)
-    (magit-file-log buffer-file-name)
+    (magit-log-buffer-file)
     (delete-other-windows)))
 (define-key global-map (kbd "C-c m b l")
   (lambda ()
@@ -30,7 +30,8 @@
 (define-key global-map (kbd "C-c m a")
   (lambda ()
     (interactive)
-    (vc-annotate (buffer-file-name) "HEAD")))
+    (vc-annotate (buffer-file-name) "HEAD")
+    (delete-other-windows)))
 (define-key global-map (kbd "C-c m p")
   (lambda ()
     (interactive)
@@ -48,11 +49,8 @@
 ;; turn on auto-revert
 (setq magit-auto-revert-mode t)
 
-;; magit version: 1.4.0
-(setq magit-last-seen-setup-instructions "1.4.0")
-
-;; keybindings
-(define-key magit-mode-map (kbd "C-S-f") 'magit-key-mode-popup-gitflow)
+;; keybindings for gitflow (C-f to C-S-f)
 (define-key magit-gitflow-mode-map (kbd "C-f") nil)
+(define-key magit-mode-map (kbd "C-S-f") 'magit-gitflow-popup)
 
 (provide 'microamp-magit)
