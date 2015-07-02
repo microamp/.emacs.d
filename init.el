@@ -335,7 +335,12 @@
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
 
 ;; additional keybindings for navigation
-(define-key global-map (kbd "M-]") 'end-of-defun)
+(defun beginning-of-next-defun ()
+  (interactive)
+  (end-of-defun)
+  (end-of-defun)
+  (beginning-of-defun))
+(define-key global-map (kbd "M-]") 'beginning-of-next-defun)
 (define-key global-map (kbd "M-[") 'beginning-of-defun)
 
 ;; load custom elisp libraries
