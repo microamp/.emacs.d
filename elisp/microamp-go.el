@@ -27,11 +27,25 @@
     (message (concat "running '" command "'..."))
     (shell-command command)))
 
+;; run `go run` shell command
+(defun cmd-go-run ()
+  (interactive)
+  (shell-command (concat "go run " (buffer-file-name))))
+
 ;; load custom .el files
 (dolist (el (list (concat gopath "/src/github.com/golang/lint/misc/emacs/golint.el")
                   (concat gopath "/src/golang.org/x/tools/cmd/oracle/oracle.el")
                   (concat gopath "/src/golang.org/x/tools/refactor/rename/rename.el")))
   (load-file el))
+
+;; go-direx settings (to appear on the right)
+(push '("^\*go-direx:"
+        :regexp t
+        :position right
+        :width 0.4
+        :dedicated t
+        :stick t)
+      popwin:special-display-config)
 
 ;; set tab width
 (add-hook 'go-mode-hook
@@ -52,57 +66,54 @@
           (lambda ()
             (setq-local helm-dash-docsets '("Go"))))
 
-;; go-direx buffer to be on the right
-(push '("^\*go-direx:"
-        :regexp t
-        :position right
-        :width 0.4
-        :dedicated t
-        :stick t)
-      popwin:special-display-config)
+;; define go-specific compile command
+(add-hook 'go-mode
+          (lambda ()
+            (if (not (string-match "go" compile-command))
+                (set (make-local-variable 'compile-command)
+                     go-compile-command))))
 
-(defun go-keybinding-hooks ()
-  ;; keybindings: compile
-  (if (not (string-match "go" compile-command))
-      (set (make-local-variable 'compile-command)
-           go-compile-command))
-  (define-key go-mode-map (kbd "C-c C-c") 'compile)
-  (define-key go-mode-map (kbd "C-c C-r")
-    (lambda ()
-      (interactive)
-      (shell-command (concat "go run " (buffer-file-name)))))
-  ;; keybindings: go-direx (replacing imenu)
-  (define-key go-mode-map (kbd "C-c C-j") 'go-direx-pop-to-buffer)
-  ;; keybindings: gofmt/godoc
-  (define-key go-mode-map (kbd "C-c C-f") 'gofmt)
-  (define-key go-mode-map (kbd "C-c C-d") 'godoc)
-  ;; keybindings: imports
-  (define-key go-mode-map (kbd "C-c C-i i") 'go-import-add)
-  (define-key go-mode-map (kbd "C-c C-i c") 'go-remove-unused-imports)
-  (define-key go-mode-map (kbd "C-c C-i g") 'go-goto-imports)
-  ;; keybindings: godef
-  (define-key go-mode-map (kbd "C-c d") 'godef-describe) ;; redundant because go-eldoc
-  (local-unset-key (kbd "C-j"))
-  (define-key go-mode-map (kbd "M-.") 'godef-jump)
-  (local-unset-key (kbd "C-*"))
-  (define-key go-mode-map (kbd "M-,") 'pop-tag-mark)
-  ;; keybindings: go playground (go pastebin)
-  (define-key go-mode-map (kbd "C-c C-p b") 'go-play-buffer)
-  (define-key go-mode-map (kbd "C-c C-p r") 'go-play-region)
-  (define-key go-mode-map (kbd "C-c C-p d") 'go-download-play)
-  ;; keybindings: errcheck
-  (define-key go-mode-map (kbd "C-c C-e") 'go-errcheck)
-  ;; keybindings: oracle
-  (define-key go-mode-map (kbd "C-c C-o s") 'go-oracle-set-scope)
-  (define-key go-mode-map (kbd "C-c C-o c") 'go-oracle-callers)
-  ;; keybindings: rename
-  (define-key go-mode-map (kbd "C-c M-r") 'go-rename)
-  ;; keybindings: golint
-  (define-key go-mode-map (kbd "C-c C-l") 'golint)
-  ;; keybindings: navigation (M-]/M-[ to jump to next/previous func)
-  (define-key go-mode-map (kbd "M-[") 'beginning-of-defun)
-  (define-key go-mode-map (kbd "M-]") 'end-of-defun))
+;; keybindings: compile
+(define-key go-mode-map (kbd "C-c C-c") 'compile)
 
-(add-hook 'go-mode-hook 'go-keybinding-hooks)
+;; keybindings: go run
+(define-key go-mode-map (kbd "C-c C-r") 'cmd-go-run)
+
+;; keybindings: go-direx (replacing imenu)
+(define-key go-mode-map (kbd "C-c C-j") 'go-direx-pop-to-buffer)
+
+;; keybindings: gofmt/godoc
+(define-key go-mode-map (kbd "C-c C-f") 'gofmt)
+(define-key go-mode-map (kbd "C-c C-d") 'godoc)
+
+;; keybindings: imports
+(define-key go-mode-map (kbd "C-c C-i i") 'go-import-add)
+(define-key go-mode-map (kbd "C-c C-i c") 'go-remove-unused-imports)
+(define-key go-mode-map (kbd "C-c C-i g") 'go-goto-imports)
+
+;; keybindings: godef
+(define-key go-mode-map (kbd "C-c d") 'godef-describe) ;; redundant because go-eldoc
+(local-unset-key (kbd "C-j"))
+(local-unset-key (kbd "C-*"))
+(define-key go-mode-map (kbd "M-.") 'godef-jump)
+(define-key go-mode-map (kbd "M-,") 'pop-tag-mark)
+
+;; keybindings: go playground (go pastebin)
+(define-key go-mode-map (kbd "C-c C-p b") 'go-play-buffer)
+(define-key go-mode-map (kbd "C-c C-p r") 'go-play-region)
+(define-key go-mode-map (kbd "C-c C-p d") 'go-download-play)
+
+;; keybindings: errcheck
+(define-key go-mode-map (kbd "C-c C-e") 'go-errcheck)
+
+;; keybindings: oracle
+(define-key go-mode-map (kbd "C-c C-o s") 'go-oracle-set-scope)
+(define-key go-mode-map (kbd "C-c C-o c") 'go-oracle-callers)
+
+;; keybindings: rename
+(define-key go-mode-map (kbd "C-c M-r") 'go-rename)
+
+;; keybindings: golint
+(define-key go-mode-map (kbd "C-c C-l") 'golint)
 
 (provide 'microamp-go)
