@@ -45,6 +45,9 @@
 ;; turn on auto-revert
 (setq magit-auto-revert-mode t)
 
+;; additional keybindings
+(define-key magit-mode-map (kbd "<C-return>") 'magit-checkout)
+
 ;; keybindings for gitflow (C-f to C-S-f)
 (define-key magit-gitflow-mode-map (kbd "C-f") nil)
 (define-key magit-mode-map (kbd "C-S-f") 'magit-gitflow-popup)
