@@ -32,10 +32,6 @@
     (interactive)
     (vc-annotate (buffer-file-name) "HEAD")
     (delete-other-windows)))
-(define-key global-map (kbd "C-c m p")
-  (lambda ()
-    (interactive)
-    (switch-to-buffer "*magit-process*")))
 (define-key global-map (kbd "C-c m t") 'git-timemachine)
 
 ;; scroll to top when magit section is expanded

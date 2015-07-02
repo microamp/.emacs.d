@@ -93,8 +93,8 @@
 
 ;(setq helm-split-window-in-side-p t)
 
-;; activate path completion
-(setq helm-ff-auto-update-initial-value t)
+;; de-activate path completion
+(setq helm-ff-auto-update-initial-value nil)
 
 ;; helm-dash settings
 (setq helm-dash-all-docsets '("AngularJS"

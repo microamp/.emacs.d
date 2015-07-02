@@ -1,5 +1,5 @@
-;; tab = 2 spaces
-(setq go-tab-width 2)
+;; tab = 4 spaces
+(setq go-tab-width 4)
 ;; goimports in favour of gofmt
 (setq gofmt-command "goimports")
 ;; external dependencies
@@ -66,15 +66,14 @@
           (lambda ()
             (setq-local helm-dash-docsets '("Go"))))
 
-;; define go-specific compile command
-(add-hook 'go-mode
-          (lambda ()
-            (if (not (string-match "go" compile-command))
-                (set (make-local-variable 'compile-command)
-                     go-compile-command))))
-
 ;; keybindings: compile
-(define-key go-mode-map (kbd "C-c C-c") 'compile)
+(define-key go-mode-map (kbd "C-c C-c")
+  (lambda ()
+    (interactive)
+    ;; define go-specific compile command (go build/test/vet)
+    (set (make-local-variable 'compile-command)
+         go-compile-command)
+    (compile compile-command)))
 
 ;; keybindings: go run
 (define-key go-mode-map (kbd "C-c C-r") 'cmd-go-run)
