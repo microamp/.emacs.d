@@ -15,7 +15,7 @@
 (define-key global-map (kbd "C-c m b m")
   (lambda ()
     (interactive)
-    (magit-show-refs-popup)
+    (magit-show-refs-head)
     (delete-other-windows)))
 (define-key global-map (kbd "C-c m f l")
   (lambda ()
