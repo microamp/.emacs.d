@@ -42,9 +42,6 @@
 ;; turn on gitflow
 (add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
 
-;; turn on auto-revert
-(setq magit-auto-revert-mode t)
-
 ;; additional keybindings
 (define-key magit-mode-map (kbd "<C-return>") 'magit-checkout)
 
