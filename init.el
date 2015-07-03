@@ -129,8 +129,6 @@
   ;; import paths from shell
   (exec-path-from-shell-initialize)
   (exec-path-from-shell-copy-env "GOBIN")
-  ;; always consume fullscreen
-  (set-frame-parameter nil 'fullscreen 'fullboth)
   ;; fix keybindings (emacs-mac-port)
   (setq mac-option-modifier 'meta
         mac-command-modifier 'super
@@ -392,3 +390,7 @@
  '(neo-file-link-face ((t (:foreground "#FFFFC8"))))
  '(region ((t (:background "#427B58"))))
  '(which-func ((t (:foreground "#83A598")))))
+
+;; always consume fullscreen
+(when on-os-x?
+  (set-frame-parameter nil 'fullscreen 'fullboth))
