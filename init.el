@@ -125,6 +125,12 @@
 
 (setq on-os-x? (equal system-type 'darwin))
 
+(defun consume-fullscreen (filename)
+  "Maximise Emacs' frame once init.el is loaded."
+  (when (string-equal filename
+                      (concat (getenv "HOME") "/.emacs.d/init.el"))
+    (set-frame-parameter nil 'fullscreen 'fullboth)))
+
 (when on-os-x?
   ;; import paths from shell
   (exec-path-from-shell-initialize)
@@ -132,7 +138,8 @@
   ;; fix keybindings (emacs-mac-port)
   (setq mac-option-modifier 'meta
         mac-command-modifier 'super
-        mac-function-modifier 'hyper))
+        mac-function-modifier 'hyper)
+  (add-hook 'after-load-functions 'consume-fullscreen))
 
 (menu-bar-mode -1) ;; hide menu bar
 (tool-bar-mode -1) ;; hide tool bar
@@ -390,7 +397,3 @@
  '(neo-file-link-face ((t (:foreground "#FFFFC8"))))
  '(region ((t (:background "#427B58"))))
  '(which-func ((t (:foreground "#83A598")))))
-
-;; always consume fullscreen
-(when on-os-x?
-  (set-frame-parameter nil 'fullscreen 'fullboth))
