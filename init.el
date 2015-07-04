@@ -120,16 +120,18 @@
 (require 'paradox)
 (require 'paren)
 
-(setq emacs-dir "~/.emacs.d"
-      custom-lib-dir "elisp")
+(setq emacs-dot-d (concat (getenv "HOME") "/.emacs.d")
+      init-file (concat emacs-dot-d "/init.el")
+      custom-lib-dir (concat emacs-dot-d "/elisp"))
 
 (setq on-os-x? (equal system-type 'darwin))
 
 (defun consume-fullscreen (filename)
   "Maximise Emacs' frame once init.el is loaded."
-  (when (string-equal filename
-                      (concat (getenv "HOME") "/.emacs.d/init.el"))
+  (when (string-equal filename init-file)
     (set-frame-parameter nil 'fullscreen 'fullboth)))
+
+(add-hook 'after-load-functions 'consume-fullscreen)
 
 (when on-os-x?
   ;; import paths from shell
@@ -138,8 +140,7 @@
   ;; fix keybindings (emacs-mac-port)
   (setq mac-option-modifier 'meta
         mac-command-modifier 'super
-        mac-function-modifier 'hyper)
-  (add-hook 'after-load-functions 'consume-fullscreen))
+        mac-function-modifier 'hyper))
 
 (menu-bar-mode -1) ;; hide menu bar
 (tool-bar-mode -1) ;; hide tool bar
@@ -356,7 +357,7 @@
 (define-key global-map (kbd "M-[") 'beginning-of-defun)
 
 ;; load custom elisp libraries
-(add-to-list 'load-path (concat emacs-dir "/" custom-lib-dir))
+(add-to-list 'load-path custom-lib-dir)
 (load-library "microamp-chat")
 (load-library "microamp-clojure")
 (load-library "microamp-colours")
