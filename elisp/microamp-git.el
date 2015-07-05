@@ -10,7 +10,7 @@
 (define-key global-map (kbd "C-c m l")
   (lambda ()
     (interactive)
-    (magit-log-all)
+    (magit-log-head)
     (delete-other-windows)))
 (define-key global-map (kbd "C-c m b m")
   (lambda ()
