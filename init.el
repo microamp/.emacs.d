@@ -139,7 +139,8 @@
   (exec-path-from-shell-copy-env "GOBIN")
   ;; fix keybindings (emacs-mac-port)
   (setq mac-option-modifier 'meta
-        mac-command-modifier 'super
+        mac-command-modifier 'meta
+        mac-right-command-modifier 'super
         mac-function-modifier 'hyper))
 
 (menu-bar-mode -1) ;; hide menu bar
