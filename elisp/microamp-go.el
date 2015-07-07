@@ -61,6 +61,9 @@
 ;; eldoc integration
 (add-hook 'go-mode-hook 'go-eldoc-setup)
 
+;; highlight TODO, FIXME, etc.
+(add-hook 'go-mode-hook 'hl-todo-mode)
+
 ;; helm-dash integration
 (add-hook 'go-mode-hook
           (lambda ()
