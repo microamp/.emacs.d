@@ -60,6 +60,7 @@
     help-fns+
     highlight
     highlight-parentheses
+    hl-todo
     htmlize
     hy-mode
     ipython
@@ -149,6 +150,8 @@
 (blink-cursor-mode t) ;; make cursor blink
 
 (global-auto-revert-mode t) ;; refresh buffers when changed on disk
+
+(global-hl-todo-mode t) ;; highlight TODO, FIXME, etc.
 
 (ac-config-default) ;; auto-completion on!
 (setq ac-auto-show-menu nil) ;; but with no popup!
