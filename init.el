@@ -185,6 +185,7 @@
 (setq neo-theme 'ascii)
 (define-key neotree-mode-map (kbd "o") 'neotree-enter)
 (global-set-key [f8] 'neotree-toggle)
+(global-set-key [f7] 'neotree-find)
 (global-set-key (kbd "<C-tab>") 'neotree-toggle)
 
 ;; browse url using chrome/firefox
