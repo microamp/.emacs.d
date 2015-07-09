@@ -93,10 +93,10 @@
 (define-key go-mode-map (kbd "C-c C-i c") 'go-remove-unused-imports)
 (define-key go-mode-map (kbd "C-c C-i g") 'go-goto-imports)
 
-;; keybindings: godef
+;; keybindings: godef (M-.: godef-jump and M-,: pop-tag-mark)
 (define-key go-mode-map (kbd "C-c d") 'godef-describe) ;; redundant because go-eldoc
-(local-unset-key (kbd "C-j"))
-(local-unset-key (kbd "C-*"))
+(define-key go-mode-map (kbd "C-j") nil)
+(define-key go-mode-map (kbd "C-*") nil)
 (define-key go-mode-map (kbd "M-.") 'godef-jump)
 (define-key go-mode-map (kbd "M-,") 'pop-tag-mark)
 
