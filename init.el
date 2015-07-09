@@ -120,6 +120,7 @@
 (require 'neotree)
 (require 'paradox)
 (require 'paren)
+(require 'restclient)
 
 (setq emacs-dot-d (concat (getenv "HOME") "/.emacs.d")
       init-file (concat emacs-dot-d "/init.el")
@@ -361,6 +362,22 @@
   (beginning-of-defun))
 (define-key global-map (kbd "M-]") 'beginning-of-next-defun)
 (define-key global-map (kbd "M-[") 'beginning-of-defun)
+
+(defun string/ends-with (s ending)
+  "Returns non-nil if s ends with ending."
+  (cond ((>= (length s) (length ending))
+         (let ((elength (length ending)))
+           (string= (substring s (- 0 elength)) ending)))
+        (t nil)))
+
+(defun enable-restclient-mode-for-http-file ()
+  "Enables restclient-mode for .http files."
+  (let ((current-buffer buffer-file-name))
+    (when (and (stringp current-buffer)
+               (string/ends-with current-buffer ".http"))
+      (restclient-mode))))
+
+(add-hook 'find-file-hook 'enable-restclient-mode-for-http-file)
 
 ;; load custom elisp libraries
 (add-to-list 'load-path custom-lib-dir)
