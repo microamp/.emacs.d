@@ -63,6 +63,7 @@
     hl-todo
     htmlize
     hy-mode
+    hydra
     ipython
     jabber
     jedi
@@ -360,6 +361,7 @@
   (end-of-defun)
   (end-of-defun)
   (beginning-of-defun))
+
 (define-key global-map (kbd "M-]") 'beginning-of-next-defun)
 (define-key global-map (kbd "M-[") 'beginning-of-defun)
 
@@ -378,6 +380,25 @@
       (restclient-mode))))
 
 (add-hook 'find-file-hook 'enable-restclient-mode-for-http-file)
+
+;; hydra settings (zoom)
+(defhydra hydra-zoom (global-map "C-z")
+  "Defines Hydra keybindings for zooming in and out."
+  ("n" text-scale-increase "in")
+  ("p" text-scale-decrease "out"))
+
+;; hydra settings (restclient)
+(defhydra hydra-restclient ()
+  "Defines Hydra keybindings for restclient-mode."
+  ("c" restclient-http-send-current-stay-in-window)
+  ("v" restclient-http-send-current)
+  ("n" restclient-jump-next)
+  ("p" restclient-jump-prev)
+  ("r" restclient-http-send-current-raw)
+  ("u" restclient-copy-curl-command)
+  ("." restclient-mark-current))
+
+(define-key restclient-mode-map (kbd "C-.") 'hydra-restclient/body)
 
 ;; load custom elisp libraries
 (add-to-list 'load-path custom-lib-dir)
