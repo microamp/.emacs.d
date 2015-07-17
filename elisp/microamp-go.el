@@ -15,7 +15,7 @@
                           "golang.org/x/tools/cmd/oracle"))
 ;; compile command
 (setq command-list '("go build -v"
-                     "go test -v"
+                     "go test -v ./..."
                      "go vet ./..."))
 (setq go-compile-command (mapconcat 'identity command-list " && "))
 ;; gopath from env
