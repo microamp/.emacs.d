@@ -155,6 +155,8 @@
 
 (global-hl-todo-mode t) ;; highlight TODO, FIXME, etc.
 
+(delete-selection-mode 1) ;; highlighted to be replaced
+
 (ac-config-default) ;; auto-completion on!
 (setq ac-auto-show-menu nil) ;; but with no popup!
 
