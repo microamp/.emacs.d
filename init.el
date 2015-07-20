@@ -10,6 +10,7 @@
 
 (defvar package-list
   '(alchemist
+    anzu
     auto-complete
     avy
     bash-completion
@@ -154,6 +155,8 @@
 (global-auto-revert-mode t) ;; refresh buffers when changed on disk
 
 (global-hl-todo-mode t) ;; highlight TODO, FIXME, etc.
+
+(global-anzu-mode +1) ;; display current match and total matches
 
 (delete-selection-mode 1) ;; highlighted to be replaced
 
