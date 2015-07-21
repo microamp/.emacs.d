@@ -112,16 +112,8 @@
     (when (not (package-installed-p p))
       (package-install p))))
 
-(require 'auto-complete-config)
-(require 'calfw)
-(require 'dired+)
 (require 'dired-rainbow)
-(require 'guide-key)
-(require 'helm-config)
-(require 'highlight-parentheses)
 (require 'neotree)
-(require 'paradox)
-(require 'paren)
 (require 'restclient)
 
 (setq emacs-dot-d (concat (getenv "HOME") "/.emacs.d")
