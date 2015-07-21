@@ -163,9 +163,9 @@
 (ac-config-default) ;; auto-completion on!
 (setq ac-auto-show-menu nil) ;; but with no popup!
 
-;; display time in mode line (in 24-hour format)
+;; display date and time in mode line (in 24-hour format)
 (setq display-time-string-forms
-      '((propertize (concat " " 24-hours ":" minutes " "))))
+  '((substring year -4) "-" month "-" day " " 24-hours ":" minutes))
 (display-time-mode 1)
 
 ;; default font
