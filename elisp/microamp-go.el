@@ -3,11 +3,11 @@
 ;; goimports in favour of gofmt
 (setq gofmt-command "goimports")
 ;; external dependencies
-(setq external-packages '("code.google.com/p/rog-go/exp/cmd/godef"
-                          "github.com/golang/lint/golint"
+(setq external-packages '("github.com/golang/lint/golint"
                           "github.com/jstemmer/gotags"
                           "github.com/kisielk/errcheck"
                           "github.com/nsf/gocode"
+                          "github.com/rogpeppe/godef"
                           "github.com/tleyden/checkers-bot-minimax"
                           "github.com/tools/godep"
                           "golang.org/x/tools/cmd/goimports"
