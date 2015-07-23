@@ -17,6 +17,7 @@
     bookmark+
     calfw
     cider
+    clippy
     clojure-cheatsheet
     clojure-mode
     color-theme
@@ -138,6 +139,10 @@
         mac-command-modifier 'meta
         mac-right-command-modifier 'super
         mac-function-modifier 'hyper))
+
+;; mr clippy
+(global-set-key (kbd "C-x M-c f") 'clippy-describe-function)
+(global-set-key (kbd "C-x M-c v") 'clippy-describe-variable)
 
 (menu-bar-mode -1) ;; hide menu bar
 (tool-bar-mode -1) ;; hide tool bar
