@@ -52,6 +52,7 @@
     google-this
     guide-key
     haskell-mode
+    highlight-symbol
     helm
     helm-ag
     helm-dash
@@ -140,10 +141,6 @@
         mac-right-command-modifier 'super
         mac-function-modifier 'hyper))
 
-;; mr clippy
-(global-set-key (kbd "C-x M-c f") 'clippy-describe-function)
-(global-set-key (kbd "C-x M-c v") 'clippy-describe-variable)
-
 (menu-bar-mode -1) ;; hide menu bar
 (tool-bar-mode -1) ;; hide tool bar
 
@@ -158,10 +155,15 @@
 (set-face-attribute 'anzu-mode-line nil
                     :foreground "yellow" :weight 'bold)
 (custom-set-variables
- '(anzu-mode-lighter "")
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(anzu-deactivate-region t)
+ '(anzu-mode-lighter "")
+ '(anzu-replace-to-string-separator " => ")
  '(anzu-search-threshold 1000)
- '(anzu-replace-to-string-separator " => "))
+ '(god-mod-alist (quote ((nil . "C-M-")))))
 
 (delete-selection-mode 1) ;; highlighted to be replaced
 
@@ -217,6 +219,20 @@
   (lambda ()
     (interactive)
     (paradox-list-packages nil)))
+
+;; "It looks like you want Clippy in your .emacs.d."
+(global-set-key (kbd "C-x M-c f") 'clippy-describe-function)
+(global-set-key (kbd "C-x M-c v") 'clippy-describe-variable)
+
+;; highlight-symbol keybindings
+(defhydra hydra-highlight-symbol ()
+  "Defines Hydra keybindings for highlight-symbol."
+  ("<f10>" highlight-symbol)
+  ("n" highlight-symbol-next)
+  ("p" highlight-symbol-prev)
+  ("q" highlight-symbol-query-replace))
+
+(global-set-key (kbd "<f10>") 'hydra-highlight-symbol/body)
 
 ;; dired-rainbow settings
 (dired-rainbow-define media "#BC8383" ("mp3" "mp4" "MP3" "MP4" "avi" "mpg" "flv" "ogg"))
@@ -451,6 +467,7 @@
  '(avy-lead-face-2 ((t (:background "#A89984" :foreground "white"))))
  '(flymake-warnline ((t (:background "#4E3D45"))))
  '(go-direx-package ((t (:foreground "#FB4933" :weight bold))))
+ '(highlight-symbol-face ((t (:background "#FB4933"))))
  '(linum ((t (:background "#282828" :foreground "#A89984"))))
  '(mu4e-header-highlight-face ((t (:inherit region :weight bold))))
  '(neo-dir-link-face ((t (:foreground "#A89984"))))
