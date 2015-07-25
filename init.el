@@ -114,6 +114,7 @@
     (when (not (package-installed-p p))
       (package-install p))))
 
+(require 'calfw)
 (require 'dired-rainbow)
 (require 'neotree)
 (require 'restclient)
