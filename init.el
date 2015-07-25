@@ -116,6 +116,7 @@
 
 (require 'calfw)
 (require 'dired-rainbow)
+(require 'direx)
 (require 'neotree)
 (require 'restclient)
 
@@ -150,6 +151,14 @@
 (global-auto-revert-mode t) ;; refresh buffers when changed on disk
 
 (global-hl-todo-mode t) ;; highlight TODO, FIXME, etc.
+
+;; direx keybindings
+(define-key direx:direx-mode-map (kbd "<C-return>")
+  (lambda ()
+    (interactive)
+    (progn
+      (direx:maybe-find-item)
+      (delete-other-windows))))
 
 ;; anzu settings (displaying current match and total matches)
 (global-anzu-mode +1)
