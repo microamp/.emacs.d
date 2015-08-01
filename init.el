@@ -137,7 +137,9 @@
 (when on-os-x?
   ;; import paths from shell
   (exec-path-from-shell-initialize)
-  (exec-path-from-shell-copy-env "GOBIN")
+  ;; NOTE: in case GOBIN is not included in PATH
+  (let ((envs '("PATH" "GOBIN")))
+    (exec-path-from-shell-copy-envs envs))
   ;; fix keybindings (emacs-mac-port)
   (setq mac-option-modifier 'meta
         mac-command-modifier 'meta
