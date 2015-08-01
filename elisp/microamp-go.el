@@ -69,7 +69,21 @@
           (lambda ()
             (setq-local helm-dash-docsets '("Go"))))
 
-;; keybindings: compile
+;; oracle scope updated as you switch to a different project
+(defun set-oracle-scope ()
+  (interactive)
+  (let ((gopath-src (concat gopath "/src/"))
+        (project-root (string-remove-suffix "/" (projectile-project-root))))
+    (let ((oracle-scope (string-remove-prefix gopath-src project-root)))
+      (setq go-oracle-scope oracle-scope)
+      (message (concat "oracle scope: " go-oracle-scope)))))
+
+(advice-add 'helm-projectile-switch-project :after
+            'set-oracle-scope)
+(advice-add 'projectile-switch-project :after
+            'set-oracle-scope)
+
+;; keybindings: compile (NOTE: recommend to use 'projectile-compile-project instead)
 (define-key go-mode-map (kbd "C-c C-c")
   (lambda ()
     (interactive)
