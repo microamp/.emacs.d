@@ -28,6 +28,7 @@
     dired-rainbow
     dired-toggle-sudo
     ein
+    elisp-slime-nav
     elixir-mode
     epc
     erc-hl-nicks
@@ -390,6 +391,10 @@
 
 ;; activate eldoc-mode
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
+
+;; M-. and M-, to jump to definition and back respectively in elisp
+(dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))
+  (add-hook hook 'elisp-slime-nav-mode))
 
 ;; additional keybindings for navigation
 (defun beginning-of-next-defun ()
