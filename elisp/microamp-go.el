@@ -124,7 +124,6 @@
 (define-key go-mode-map (kbd "C-c C-p d") 'go-download-play)
 
 ;; keybindings: errcheck
-;;(define-key go-mode-map (kbd "C-c C-e") 'go-errcheck-pkg)
 (define-key go-mode-map (kbd "C-c C-e")
   (lambda ()
     (interactive)
