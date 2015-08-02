@@ -70,13 +70,17 @@
             (setq-local helm-dash-docsets '("Go"))))
 
 ;; oracle scope updated as you switch to a different project
-(defun set-oracle-scope ()
+(defun get-go-project-root ()
   (interactive)
   (let ((gopath-src (concat gopath "/src/"))
         (project-root (string-remove-suffix "/" (projectile-project-root))))
-    (let ((oracle-scope (string-remove-prefix gopath-src project-root)))
-      (setq go-oracle-scope oracle-scope)
-      (message (concat "oracle scope: " go-oracle-scope)))))
+    (string-remove-prefix gopath-src project-root)))
+
+(defun set-oracle-scope ()
+  (interactive)
+  (let ((go-project-root (get-go-project-root)))
+    (setq go-oracle-scope go-project-root)
+    (message (concat "oracle scope: " go-oracle-scope))))
 
 (advice-add 'helm-projectile-switch-project :after
             'set-oracle-scope)
@@ -120,7 +124,11 @@
 (define-key go-mode-map (kbd "C-c C-p d") 'go-download-play)
 
 ;; keybindings: errcheck
-(define-key go-mode-map (kbd "C-c C-e") 'go-errcheck)
+;;(define-key go-mode-map (kbd "C-c C-e") 'go-errcheck-pkg)
+(define-key go-mode-map (kbd "C-c C-e")
+  (lambda ()
+    (interactive)
+    (go-errcheck-pkg (concat (get-go-project-root) "/...") nil nil nil)))
 
 ;; keybindings: oracle
 (define-key go-mode-map (kbd "C-c C-o s") 'go-oracle-set-scope)
