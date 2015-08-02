@@ -10,6 +10,7 @@
                           "github.com/rogpeppe/godef"
                           "github.com/tleyden/checkers-bot-minimax"
                           "github.com/tools/godep"
+                          "golang.org/x/tools/cmd/cover"
                           "golang.org/x/tools/cmd/goimports"
                           "golang.org/x/tools/cmd/gorename"
                           "golang.org/x/tools/cmd/oracle"))
