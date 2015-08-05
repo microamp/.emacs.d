@@ -395,6 +395,9 @@
 ;; activate eldoc-mode
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
 
+;; no external frame for ediff
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+
 ;; M-. and M-, to jump to definition and back respectively in elisp
 (dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))
   (add-hook hook 'elisp-slime-nav-mode))

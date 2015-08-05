@@ -1,3 +1,5 @@
+(require 'go-errcheck)
+
 ;; tab = 4 spaces
 (setq go-tab-width 4)
 ;; goimports in favour of gofmt
