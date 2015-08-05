@@ -148,6 +148,7 @@
 
 (menu-bar-mode -1) ;; hide menu bar
 (tool-bar-mode -1) ;; hide tool bar
+(scroll-bar-mode -1) ;; no scroll bars
 
 (blink-cursor-mode t) ;; make cursor blink
 
