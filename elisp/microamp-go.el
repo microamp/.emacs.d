@@ -22,7 +22,12 @@
                      "go vet ./..."))
 (setq go-compile-command (mapconcat 'identity command-list " && "))
 ;; gopath from env
-(setq gopath (getenv "GOPATH"))
+(setq gopath (getenv "GOPATH")
+      godeps-dir "Godeps")
+
+(defcustom grep-find-ignore-godeps t
+  "Flag to indicate whether `godeps-dir' should be ignored in text search (grep, ag, etc.)."
+  :group 'gion)
 
 ;; install external packages via 'go get'
 (dolist (p external-packages)
@@ -89,6 +94,19 @@
             'set-oracle-scope)
 (advice-add 'projectile-switch-project :after
             'set-oracle-scope)
+
+;; include Godeps/ in grep ignored directories
+(defun ignore-godeps ()
+  (interactive)
+  (if grep-find-ignore-godeps
+      (if (not (member godeps-dir grep-find-ignored-directories))
+          (setq grep-find-ignored-directories
+                (append grep-find-ignored-directories (list godeps-dir))))))
+
+(advice-add 'helm-projectile-switch-project :after
+            'ignore-godeps)
+(advice-add 'projectile-switch-project :after
+            'ignore-godeps)
 
 ;; keybindings: compile (NOTE: recommend to use 'projectile-compile-project instead)
 (define-key go-mode-map (kbd "C-c C-c")
