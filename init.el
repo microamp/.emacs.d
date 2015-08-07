@@ -62,6 +62,7 @@
     helm-projectile
     helm-pt
     helm-pydoc
+    helm-spotify
     help-fns+
     highlight
     highlight-parentheses

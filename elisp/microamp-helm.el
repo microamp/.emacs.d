@@ -128,6 +128,7 @@
       (print (concat "installing/upgrading " underscored "..."))
       (helm-dash-install-docset underscored))))
 
+(define-key global-map (kbd "C-c h M-s") 'helm-spotify)
 (define-key global-map (kbd "C-c h d i") 'helm-dash-install-docset)
 (define-key global-map (kbd "C-c h d u")
   (lambda ()
