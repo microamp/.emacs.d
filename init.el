@@ -415,21 +415,8 @@
 (define-key global-map (kbd "M-]") 'beginning-of-next-defun)
 (define-key global-map (kbd "M-[") 'beginning-of-defun)
 
-(defun string/ends-with (s ending)
-  "Returns non-nil if s ends with ending."
-  (cond ((>= (length s) (length ending))
-         (let ((elength (length ending)))
-           (string= (substring s (- 0 elength)) ending)))
-        (t nil)))
-
-(defun enable-restclient-mode-for-http-file ()
-  "Enables restclient-mode for .http files."
-  (let ((current-buffer buffer-file-name))
-    (when (and (stringp current-buffer)
-               (string/ends-with current-buffer ".http"))
-      (restclient-mode))))
-
-(add-hook 'find-file-hook 'enable-restclient-mode-for-http-file)
+;; enable restclient-mode for all .http files
+(add-to-list 'auto-mode-alist '("\\.http\\'" . restclient-mode))
 
 ;; hydra settings (zoom)
 (defhydra hydra-zoom (global-map "C-z")
