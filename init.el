@@ -190,8 +190,19 @@
 (setq ac-auto-show-menu nil) ;; but with no popup!
 
 ;; display date and time in mode line (in 24-hour format)
+(defun zero-fill (s)
+  (format "%02d" (string-to-number s)))
+
 (setq display-time-string-forms
-  '((substring year -4) "-" month "-" day " " 24-hours ":" minutes))
+      '((substring year -4)
+        "-"
+        (zero-fill month)
+        "-"
+        (zero-fill day)
+        " "
+        24-hours
+        ":"
+        minutes))
 (display-time-mode 1)
 
 ;; default font
