@@ -41,6 +41,7 @@
     flymake-jslint
     flymake-python-pyflakes
     geiser
+    gh-md
     git-timemachine
     go-autocomplete
     go-direx
@@ -74,8 +75,10 @@
     js2-mode
     lfe-mode
     load-theme-buffer-local
+    lua-mode
     magit
     magit-gitflow
+    markdown-mode
     merlin
     mew
     monky
@@ -118,6 +121,7 @@
 (require 'calfw)
 (require 'dired-rainbow)
 (require 'direx)
+(require 'markdown-mode)
 (require 'neotree)
 (require 'restclient)
 
@@ -401,6 +405,10 @@
 ;; M-. and M-, to jump to definition and back respectively in elisp
 (dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))
   (add-hook hook 'elisp-slime-nav-mode))
+
+;; github-flavoured markdown (for README.md files)
+(add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
+(define-key gfm-mode-map (kbd "C-c r") 'gh-md-render-buffer)
 
 ;; additional keybindings for navigation
 (defun beginning-of-next-defun ()
