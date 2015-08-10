@@ -173,16 +173,6 @@
 (global-anzu-mode +1)
 (set-face-attribute 'anzu-mode-line nil
                     :foreground "yellow" :weight 'bold)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(anzu-deactivate-region t)
- '(anzu-mode-lighter "")
- '(anzu-replace-to-string-separator " => ")
- '(anzu-search-threshold 1000)
- '(god-mod-alist (quote ((nil . "C-M-")))))
 
 (delete-selection-mode 1) ;; highlighted to be replaced
 
@@ -478,6 +468,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(anzu-deactivate-region t)
+ '(anzu-mode-lighter "")
+ '(anzu-replace-to-string-separator " => ")
+ '(anzu-search-threshold 1000)
  '(god-mod-alist (quote ((nil . "C-M-")))))
 
 (custom-set-faces
@@ -492,7 +486,6 @@
  '(flymake-warnline ((t (:background "#4E3D45"))))
  '(go-direx-package ((t (:foreground "#FB4933" :weight bold))))
  '(highlight-symbol-face ((t (:background "#FB4933"))))
- '(linum ((t (:background "#282828" :foreground "#A89984"))))
  '(mu4e-header-highlight-face ((t (:inherit region :weight bold))))
  '(neo-dir-link-face ((t (:foreground "#A89984"))))
  '(neo-expand-btn-face ((t (:foreground "#FB4933"))))
