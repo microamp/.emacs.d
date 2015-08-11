@@ -23,7 +23,7 @@
  python-docsets '("Python 2" "Python 3"))
 
 ;; highlight TODO, FIXME, etc.
-(add-hook 'python-mode 'hl-todo-mode)
+(add-hook 'python-mode-hook 'hl-todo-mode)
 
 ;; vertical line
 (setq-default
