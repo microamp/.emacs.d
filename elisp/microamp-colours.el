@@ -12,11 +12,11 @@
 (setq font-lock-maximum-decoration (quote ((dired-mode) (t . t))))
 
 ;; use zenburn theme for eww/git-timemachine/vc-annotate
-(add-hook 'eww-mode-hook
-          (lambda nil (load-theme-buffer-local 'zenburn (current-buffer))))
-(add-hook 'git-timemachine-mode-hook
-          (lambda nil (load-theme-buffer-local 'zenburn (current-buffer))))
-(add-hook 'vc-annotate-mode-hook
-          (lambda nil (load-theme-buffer-local 'zenburn (current-buffer))))
+;;(add-hook 'eww-mode-hook
+;;          (lambda nil (load-theme-buffer-local 'zenburn (current-buffer))))
+;;(add-hook 'git-timemachine-mode-hook
+;;          (lambda nil (load-theme-buffer-local 'zenburn (current-buffer))))
+;;(add-hook 'vc-annotate-mode-hook
+;;          (lambda nil (load-theme-buffer-local 'zenburn (current-buffer))))
 
 (provide 'microamp-colours)
