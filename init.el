@@ -32,6 +32,7 @@
     elixir-mode
     epc
     erc-hl-nicks
+    eredis
     exec-path-from-shell
     fill-column-indicator
     find-file-in-project
@@ -459,6 +460,7 @@
 (load-library "microamp-projectile")
 (load-library "microamp-python")
 (load-library "microamp-racket")
+(load-library "microamp-redis")
 (load-library "microamp-shell")
 (load-library "microamp-sql")
 (load-library "microamp-smartparens")
