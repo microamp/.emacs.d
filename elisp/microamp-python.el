@@ -9,7 +9,7 @@
  ;; ipython to be default shell
  python-shell-interpreter "ipython"
  ;; linting settings
- python-max-line-length 99
+ python-max-line-length 99 ;; instead of 79 (see PEP-8 for more info)
  flake8-extra-arguments (list (concat "--max-line-length=" (number-to-string python-max-line-length)))
  flymake-python-pyflakes-executable "flake8"
  flymake-python-pyflakes-extra-arguments flake8-extra-arguments
@@ -22,10 +22,12 @@
  ;; dash docsets
  python-docsets '("Python 2" "Python 3"))
 
+;; highlight TODO, FIXME, etc.
+(add-hook 'python-mode 'hl-todo-mode)
+
 ;; vertical line
 (setq-default
- fci-rule-column python-max-line-length
- fci-rule-color "#F0DFAF")
+ fci-rule-column python-max-line-length)
 
 (jedi:install-server)
 
@@ -39,7 +41,7 @@
 
 ;; python hooks
 (add-hook 'python-mode-hook 'fci-mode)
-;;(add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
+(add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
 (add-hook 'python-mode-hook 'jedi:setup)
 (add-hook 'python-mode-hook
           (lambda ()
