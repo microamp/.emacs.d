@@ -71,6 +71,7 @@
     htmlize
     hy-mode
     hydra
+    indent-guide
     ipython
     jabber
     jedi
