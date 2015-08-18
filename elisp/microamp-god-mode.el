@@ -1,7 +1,5 @@
 (require 'god-mode)
 
-(define-key global-map (kbd "<backtab>") 'god-mode-all)
-
 ;; no god in the following major modes
 (add-to-list 'god-exempt-major-modes 'compilation-mode)
 (add-to-list 'god-exempt-major-modes 'debugger-mode)
@@ -15,26 +13,20 @@
 (add-to-list 'god-exempt-major-modes 'special-mode)
 (add-to-list 'god-exempt-major-modes 'vc-annotate-mode)
 
+(define-key global-map (kbd "<escape>") 'god-mode) ;; activate (global keymap)
+
 (define-key god-local-mode-map (kbd ".") 'repeat)
-(define-key god-local-mode-map (kbd "i") 'god-mode-all) ;; deactivate
-(define-key god-local-mode-map (kbd "<backtab>") 'ignore) ;; activate
+(define-key god-local-mode-map (kbd "i") 'god-mode) ;; deactivate
+(define-key god-local-mode-map (kbd "<escape>") 'ignore) ;; activate
 
-(defun set-colour-god-mode-on ()
-  (interactive)
-  (set-cursor-color "gray60")
-  (set-face-foreground 'mode-line "gray60")
-  (set-face-background 'hl-line "gray20"))
+(defun my-update-cursor ()
+  (setq cursor-type (if (or god-local-mode buffer-read-only)
+                        'hollow
+                      'box)))
 
-(defun set-colour-god-mode-off ()
-  (interactive)
-  (set-cursor-color "#fdf4c1")
-  (set-face-foreground 'mode-line "#fdf4c1")
-  (set-face-background 'hl-line "#2b3c44"))
+(add-hook 'god-mode-enabled-hook 'my-update-cursor)
+(add-hook 'god-mode-disabled-hook 'my-update-cursor)
 
-(god-mode-all) ;; god-mode enabled on startup
-(set-colour-god-mode-on)
-
-(add-hook 'god-mode-enabled-hook 'set-colour-god-mode-on)
-(add-hook 'god-mode-disabled-hook 'set-colour-god-mode-off)
+;;(god-mode) ;; activated on startup
 
 (provide 'microamp-god-mode)
