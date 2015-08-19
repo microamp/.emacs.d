@@ -8,17 +8,25 @@
 (setq
  ;; ipython to be default shell
  python-shell-interpreter "ipython"
- ;; linting settings
+
  python-max-line-length 99 ;; instead of 79 (see PEP-8 for more info)
+
+ ;; linting settings (flake8)
  flake8-extra-arguments (list (concat "--max-line-length=" (number-to-string python-max-line-length)))
  flymake-python-pyflakes-executable "flake8"
  flymake-python-pyflakes-extra-arguments flake8-extra-arguments
- ;; jedi settings
+
+ ;; auto-formatter settings (autopep8)
+ autopep8-extra-arguments (list (concat "--max-line-length=" (number-to-string python-max-line-length)))
+ py-autopep8-options autopep8-extra-arguments
+
+ ;; auto completion settings (jedi)
  jedi:setup-keys t
  jedi:complete-on-dot t
  jedi:install-imenu t
  jedi:use-shortcuts t
  jedi:tooltip-method nil
+
  ;; dash docsets
  python-docsets '("Python 2" "Python 3"))
 
@@ -50,5 +58,6 @@
           (lambda () (remove-hook 'after-change-functions
                                   'jedi:after-change-handler t)))
 (add-hook 'python-mode-hook 'highlight-indentation-mode)
+;;(add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
 
 (provide 'microamp-python)

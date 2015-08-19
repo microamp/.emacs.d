@@ -94,6 +94,7 @@
     paradox
     powerline
     projectile
+    py-autopep8
     racket-mode
     rcirc-color
     rcirc-notify
