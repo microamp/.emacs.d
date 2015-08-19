@@ -102,6 +102,7 @@
     ruby-mode
     smartparens
     sml-mode
+    sunshine
     swiper-helm
     tuareg
     twittering-mode
@@ -373,6 +374,10 @@
   (local-set-key (kbd "M-n") 'vi-style-c-e)
   (local-set-key (kbd "M-p") 'vi-style-c-y))
 (add-hook 'eww-mode-hook 'set-eww-keybindings)
+
+;; weather forecast
+(setq sunshine-location "Boulder,US")
+;;(setq sunshine-location "Auckland,NZ")
 
 ;; helm-dash integration
 (setq
