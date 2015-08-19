@@ -43,9 +43,12 @@
 (add-hook 'python-mode-hook 'fci-mode)
 (add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
 (add-hook 'python-mode-hook 'jedi:setup)
-(add-hook 'python-mode-hook 'indent-guide-mode)
 (add-hook 'python-mode-hook
           (lambda ()
             (setq-local helm-dash-docsets python-docsets)))
+(add-hook 'jedi-mode-hook
+          (lambda () (remove-hook 'after-change-functions
+                                  'jedi:after-change-handler t)))
+(add-hook 'python-mode-hook 'highlight-indentation-mode)
 
 (provide 'microamp-python)

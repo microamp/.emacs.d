@@ -66,12 +66,12 @@
     helm-spotify
     help-fns+
     highlight
+    highlight-indentation
     highlight-parentheses
     hl-todo
     htmlize
     hy-mode
     hydra
-    indent-guide
     ipython
     jabber
     jedi
