@@ -21,6 +21,7 @@
 (define-key global-map (kbd "C-x M-s p")
   (lambda ()
     (interactive)
-    (connect-postgres 'postgres-local)))
+    (connect-postgres 'postgres-local)
+    (delete-other-windows)))
 
 (provide 'microamp-sql)

@@ -165,6 +165,8 @@
 
 (global-hl-todo-mode t) ;; highlight TODO, FIXME, etc.
 
+(add-hook 'java-mode-hook 'hl-todo-mode)
+
 ;; direx keybindings
 (define-key direx:direx-mode-map (kbd "<C-return>")
   (lambda ()
