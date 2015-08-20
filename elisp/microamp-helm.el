@@ -109,11 +109,13 @@
                               "Go"
                               "HTML"
                               "Haskell"
+                              "Lua"
                               "MongoDB"
                               "OCaml"
                               "PostgreSQL"
                               "Python 2"
                               "Python 3"
+                              "Redis"
                               "Rust"
                               "jQuery")
       helm-dash-docsets-path "~/.docsets"

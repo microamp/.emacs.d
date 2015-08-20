@@ -28,7 +28,7 @@
  jedi:tooltip-method nil
 
  ;; dash docsets
- python-docsets '("Python 2" "Python 3"))
+ python-docsets '("Python 2" "Python 3" "Redis"))
 
 ;; highlight TODO, FIXME, etc.
 (add-hook 'python-mode-hook 'hl-todo-mode)

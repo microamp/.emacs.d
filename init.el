@@ -383,7 +383,9 @@
 (setq
  emacs-lisp-docsets '("Emacs Lisp")
  html-docsets '("Bootstrap 3" "HTML")
- css-docsets '("Bootstrap 3" "CSS"))
+ css-docsets '("Bootstrap 3" "CSS")
+ shell-docsets '("Bash")
+ lua-docsets '("Lua" "Redis"))
 
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
@@ -394,6 +396,12 @@
 (add-hook 'css-mode-hook
           (lambda ()
             (setq-local helm-dash-docsets css-docsets)))
+(add-hook 'shell-mode-hook
+          (lambda ()
+            (setq-local helm-dash-docsets shell-docsets)))
+(add-hook 'lua-mode-hook
+          (lambda ()
+            (setq-local helm-dash-docsets lua-docsets)))
 
 ;; set html indentation level to 2
 (add-hook 'html-mode-hook
