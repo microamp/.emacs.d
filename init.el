@@ -24,6 +24,7 @@
     color-theme-buffer-local
     company
     darktooth-theme
+    deft
     dired+
     dired-rainbow
     dired-toggle-sudo
@@ -124,6 +125,7 @@
       (package-install p))))
 
 (require 'calfw)
+(require 'deft)
 (require 'dired-rainbow)
 (require 'direx)
 (require 'markdown-mode)
@@ -308,16 +310,21 @@
 (define-key global-map (kbd "C-x l") 'delete-other-windows)
 
 ;; focus the new window after split
-(define-key global-map (kbd "C-x w")
-  (lambda ()
-    (interactive)
-    (split-window-below)
-    (other-window 1)))
-(define-key global-map (kbd "C-x v")
-  (lambda ()
-    (interactive)
-    (split-window-right)
-    (other-window 1)))
+(defun split-vertical ()
+  (interactive)
+  (split-window-right)
+  (other-window 1))
+
+(defun split-horizontal ()
+  (interactive)
+  (split-window-below)
+  (other-window 1))
+
+(define-key global-map (kbd "C-x w") 'split-horizontal)
+(define-key global-map (kbd "C-x -") 'split-horizontal)
+
+(define-key global-map (kbd "C-x v") 'split-vertical)
+(define-key global-map (kbd "C-x |") 'split-vertical)
 
 ;; vi-style C-e/C-y
 (defun vi-style-c-e (n)
@@ -378,8 +385,7 @@
 (add-hook 'eww-mode-hook 'set-eww-keybindings)
 
 ;; weather forecast
-(setq sunshine-location "Boulder,US")
-;;(setq sunshine-location "Auckland,NZ")
+(setq sunshine-location "Auckland, NZ")
 
 ;; helm-dash integration
 (setq
@@ -421,8 +427,9 @@
 (dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))
   (add-hook hook 'elisp-slime-nav-mode))
 
-;; github-flavoured markdown (for README.md files)
-(add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
+;; github-flavoured markdown (for *.md/markdown files)
+(add-to-list 'auto-mode-alist '("\\.md\\'" . gfm-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . gfm-mode))
 (define-key gfm-mode-map (kbd "C-c r") 'gh-md-render-buffer)
 
 ;; additional keybindings for navigation
@@ -456,6 +463,18 @@
   ("." restclient-mark-current))
 
 (define-key restclient-mode-map (kbd "C-.") 'hydra-restclient/body)
+
+;; deft settings
+(setq deft-extensions '("markdown"
+                        "md"
+                        "org"
+                        "txt"))
+(setq deft-recursive t)
+(setq deft-use-filename-as-title t)
+(setq deft-text-mode 'org-mode)
+(setq deft-use-filename-as-title t)
+(define-key deft-mode-map (kbd "C-k") 'deft-filter-clear)
+(global-set-key (kbd "C-c h M-d") 'deft)
 
 ;; load custom elisp libraries
 (add-to-list 'load-path custom-lib-dir)
@@ -491,7 +510,8 @@
  '(anzu-mode-lighter "")
  '(anzu-replace-to-string-separator " => ")
  '(anzu-search-threshold 1000)
- '(god-mod-alist (quote ((nil . "C-M-")))))
+ '(god-mod-alist (quote ((nil . "C-M-"))))
+ '(sunshine-units (quote metric)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
