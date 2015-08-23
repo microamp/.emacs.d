@@ -81,8 +81,8 @@
 (defun get-go-project-root ()
   (interactive)
   (let ((gopath-src (concat gopath "/src/"))
-        (project-root (string-remove-suffix "/" (projectile-project-root))))
-    (string-remove-prefix gopath-src project-root)))
+        (project-root (s-chop-suffix "/" (projectile-project-root))))
+    (s-chop-prefix gopath-src project-root)))
 
 (defun set-oracle-scope ()
   (interactive)
