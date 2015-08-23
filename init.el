@@ -484,6 +484,7 @@
 (define-key deft-mode-map (kbd "C-k") 'deft-filter-clear)
 (define-key deft-mode-map (kbd "M-q") 'ibuffer-quit)
 (global-set-key (kbd "C-x M-d") 'deft)
+(advice-add 'deft :before 'deft-filter-clear)
 
 ;; load custom elisp libraries
 (add-to-list 'load-path custom-lib-dir)
