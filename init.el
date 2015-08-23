@@ -128,6 +128,7 @@
       (package-install p))))
 
 (require 'calfw)
+(require 'company)
 (require 'deft)
 (require 'dired-rainbow)
 (require 'direx)
@@ -163,6 +164,7 @@
 (menu-bar-mode -1) ;; hide menu bar
 (tool-bar-mode -1) ;; hide tool bar
 (scroll-bar-mode -1) ;; no scroll bars
+(setq debug-on-error t) ;; --debug-init
 
 (blink-cursor-mode t) ;; make cursor blink
 
@@ -214,9 +216,13 @@
 (setq visible-bell nil
       ring-bell-function 'ignore)
 
+;; turn off auto-save
+(setq auto-save-default nil)
+
+;; show details in dired buffers
 (add-hook 'dired-mode-hook
           '(lambda ()
-             (dired-hide-details-mode -1))) ;; show details
+             (dired-hide-details-mode -1)))
 
 ;; /usr/local/bin added to exec-path
 (setq exec-path (append exec-path '("/usr/local/bin")))
@@ -484,7 +490,8 @@
 (define-key deft-mode-map (kbd "C-k") 'deft-filter-clear)
 (define-key deft-mode-map (kbd "M-q") 'ibuffer-quit)
 (global-set-key (kbd "C-x M-d") 'deft)
-(advice-add 'deft :before 'deft-filter-clear)
+(advice-add 'deft :after 'deft-filter-clear)
+(advice-add 'deft :after 'deft-refresh)
 
 ;; load custom elisp libraries
 (add-to-list 'load-path custom-lib-dir)
