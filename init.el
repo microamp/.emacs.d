@@ -474,7 +474,7 @@
 (setq deft-text-mode 'org-mode)
 (setq deft-use-filename-as-title t)
 (define-key deft-mode-map (kbd "C-k") 'deft-filter-clear)
-(global-set-key (kbd "C-c h M-d") 'deft)
+(global-set-key (kbd "C-x M-d") 'deft)
 
 ;; load custom elisp libraries
 (add-to-list 'load-path custom-lib-dir)
