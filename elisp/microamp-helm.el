@@ -117,6 +117,7 @@
                               "Python 3"
                               "Redis"
                               "Rust"
+                              "Scala"
                               "jQuery")
       helm-dash-docsets-path "~/.docsets"
       helm-dash-min-length 2

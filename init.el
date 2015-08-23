@@ -31,6 +31,7 @@
     ein
     elisp-slime-nav
     elixir-mode
+    ensime
     epc
     erc-hl-nicks
     eredis
@@ -101,6 +102,7 @@
     rcirc-notify
     restclient
     ruby-mode
+    scala-mode2
     smartparens
     sml-mode
     sunshine
@@ -110,6 +112,7 @@
     utop
     w3m
     yaml-mode
+    yasnippet
     zenburn-theme)
   "List of packages needs to be upgraded/installed at launch")
 
@@ -288,6 +291,11 @@
 ;; programming mode hooks
 (add-hook 'prog-mode-hook 'linum-mode)
 (add-hook 'prog-mode-hook 'which-func-mode)
+
+;; snippets via yasnippet
+(define-key company-active-map [tab] nil) ;; disable TAB in company to avoid conflict with yasnippe
+(setq yas-snippet-dirs '("~/.emacs.d/plugins/yasnippet/snippets"))
+(add-hook 'prog-mode-hook #'yas-minor-mode)
 
 ;; highlight matching parens
 (show-paren-mode 1)
@@ -474,6 +482,7 @@
 (setq deft-text-mode 'org-mode)
 (setq deft-use-filename-as-title t)
 (define-key deft-mode-map (kbd "C-k") 'deft-filter-clear)
+(define-key deft-mode-map (kbd "M-q") 'ibuffer-quit)
 (global-set-key (kbd "C-x M-d") 'deft)
 
 ;; load custom elisp libraries
@@ -497,6 +506,7 @@
 (load-library "microamp-python")
 (load-library "microamp-racket")
 (load-library "microamp-redis")
+(load-library "microamp-scala")
 (load-library "microamp-shell")
 (load-library "microamp-sql")
 (load-library "microamp-smartparens")
