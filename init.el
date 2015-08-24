@@ -89,6 +89,7 @@
     monky
     mpc
     multi-eshell
+    multiple-cursors
     neotree
     nodejs-repl
     nyan-prompt
@@ -133,6 +134,7 @@
 (require 'dired-rainbow)
 (require 'direx)
 (require 'markdown-mode)
+(require 'multiple-cursors)
 (require 'neotree)
 (require 'restclient)
 
@@ -477,6 +479,12 @@
   ("." restclient-mark-current))
 
 (define-key restclient-mode-map (kbd "C-.") 'hydra-restclient/body)
+
+;; multiple cursors
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-S-m C-S-c") 'mc/mark-all-like-this)
 
 ;; deft settings
 (setq deft-extensions '("markdown"
