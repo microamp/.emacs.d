@@ -81,6 +81,7 @@
     lfe-mode
     load-theme-buffer-local
     lua-mode
+    password-generator
     magit
     magit-gitflow
     markdown-mode
@@ -176,6 +177,8 @@
 
 (add-hook 'java-mode-hook 'hl-todo-mode)
 
+(add-hook 'sql-mode-hook 'hl-todo-mode)
+
 ;; direx keybindings
 (define-key direx:direx-mode-map (kbd "<C-return>")
   (lambda ()
@@ -218,8 +221,10 @@
 (setq visible-bell nil
       ring-bell-function 'ignore)
 
-;; turn off auto-save
-(setq auto-save-default nil)
+;; increase auto-save interval for org-mode
+(add-hook 'org-mode-hook (lambda ()
+                           (interactive)
+                           (set (make-local-variable 'auto-save-interval) 60)))
 
 ;; show details in dired buffers
 (add-hook 'dired-mode-hook
@@ -497,7 +502,7 @@
 (setq deft-use-filename-as-title t)
 (define-key deft-mode-map (kbd "C-k") 'deft-filter-clear)
 (define-key deft-mode-map (kbd "M-q") 'ibuffer-quit)
-(global-set-key (kbd "C-x M-d") 'deft)
+(global-set-key (kbd "C-c h M-d") 'deft)
 (advice-add 'deft :after 'deft-filter-clear)
 (advice-add 'deft :after 'deft-refresh)
 
