@@ -502,7 +502,6 @@
 (setq deft-use-filename-as-title t)
 (define-key deft-mode-map (kbd "C-k") 'deft-filter-clear)
 (define-key deft-mode-map (kbd "M-q") 'ibuffer-quit)
-(global-set-key (kbd "C-c h M-d") 'deft)
 (advice-add 'deft :after 'deft-filter-clear)
 (advice-add 'deft :after 'deft-refresh)
 
@@ -541,6 +540,7 @@
  '(anzu-mode-lighter "")
  '(anzu-replace-to-string-separator " => ")
  '(anzu-search-threshold 1000)
+ '(auto-save-default nil)
  '(god-mod-alist (quote ((nil . "C-M-"))))
  '(sunshine-units (quote metric)))
 
