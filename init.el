@@ -292,9 +292,6 @@
 ;; make sure spaces are used when indenting code
 (setq-default indent-tabs-mode nil)
 
-;; remove trailing whitespace
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
-
 ;; doc-view-mode: continuous navigation via C-n/C-p
 (setq-default doc-view-continuous 1)
 
@@ -309,6 +306,10 @@
 (define-key company-active-map [tab] nil) ;; disable TAB in company to avoid conflict with yasnippe
 (setq yas-snippet-dirs '("~/.emacs.d/plugins/yasnippet/snippets"))
 (add-hook 'prog-mode-hook #'yas-minor-mode)
+
+;; remove trailing whitespaces
+(add-hook 'prog-mode-hook
+          (lambda () (add-to-list 'write-file-functions 'delete-trailing-whitespace)))
 
 ;; highlight matching parens
 (show-paren-mode 1)
@@ -541,6 +542,7 @@
  '(anzu-replace-to-string-separator " => ")
  '(anzu-search-threshold 1000)
  '(auto-save-default nil)
+ '(deft-auto-save-interval 0.0) ;; turn off auto-save
  '(god-mod-alist (quote ((nil . "C-M-"))))
  '(sunshine-units (quote metric)))
 
