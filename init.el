@@ -497,6 +497,7 @@
                         "md"
                         "org"
                         "txt"))
+(setq deft-directory "~/Dropbox/.deft")
 (setq deft-recursive t)
 (setq deft-use-filename-as-title t)
 (setq deft-text-mode 'org-mode)
@@ -542,7 +543,7 @@
  '(anzu-replace-to-string-separator " => ")
  '(anzu-search-threshold 1000)
  '(auto-save-default nil)
- '(deft-auto-save-interval 0.0) ;; turn off auto-save
+ '(deft-auto-save-interval 0.0)
  '(god-mod-alist (quote ((nil . "C-M-"))))
  '(sunshine-units (quote metric)))
 
