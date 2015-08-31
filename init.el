@@ -374,6 +374,10 @@
           (lambda ()
             (local-set-key (kbd "M-p") 'w3m-scroll-down)))
 
+;; markdown keybindings
+(define-key markdown-mode-map (kbd "M-n") 'vi-style-c-e)
+(define-key markdown-mode-map (kbd "M-p") 'vi-style-c-y)
+
 ;; calfw alias
 (defalias 'cfw 'cfw:open-calendar-buffer)
 
@@ -545,6 +549,9 @@
  '(auto-save-default nil)
  '(deft-auto-save-interval 0.0)
  '(god-mod-alist (quote ((nil . "C-M-"))))
+ '(magit-log-arguments (quote ("--graph" "--color" "--decorate")))
+ '(magit-log-section-arguments (quote ("--graph" "--color" "--decorate")))
+ '(magit-log-select-arguments (quote ("--graph" "--color" "--decorate")))
  '(sunshine-units (quote metric)))
 
 (custom-set-faces
