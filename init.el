@@ -29,6 +29,7 @@
     dired-rainbow
     dired-toggle-sudo
     ein
+    emms
     elisp-slime-nav
     elixir-mode
     ensime
@@ -62,6 +63,7 @@
     helm-ag
     helm-dash
     helm-descbinds
+    helm-emms
     helm-projectile
     helm-pt
     helm-pydoc
@@ -516,6 +518,7 @@
 (load-library "microamp-chat")
 (load-library "microamp-clojure")
 (load-library "microamp-colours")
+(load-library "microamp-emms")
 (load-library "microamp-elixir")
 (load-library "microamp-git")
 (load-library "microamp-go")
