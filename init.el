@@ -29,9 +29,10 @@
     dired-rainbow
     dired-toggle-sudo
     ein
-    emms
     elisp-slime-nav
     elixir-mode
+    emms
+    emms-mode-line-cycle
     ensime
     epc
     erc-hl-nicks
@@ -115,6 +116,7 @@
     twittering-mode
     utop
     w3m
+    wiki-summary
     yaml-mode
     yasnippet
     zenburn-theme)
