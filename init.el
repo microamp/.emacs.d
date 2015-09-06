@@ -74,6 +74,7 @@
     highlight-indentation
     highlight-parentheses
     hl-todo
+    howdoi
     htmlize
     hy-mode
     hydra
@@ -514,6 +515,9 @@
 (define-key deft-mode-map (kbd "M-q") 'ibuffer-quit)
 (advice-add 'deft :after 'deft-filter-clear)
 (advice-add 'deft :after 'deft-refresh)
+
+;; howdoi keybindings
+(define-key global-map (kbd "C-c M-o") 'howdoi-query)
 
 ;; load custom elisp libraries
 (add-to-list 'load-path custom-lib-dir)
