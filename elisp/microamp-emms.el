@@ -27,8 +27,8 @@
          (t (file-name-nondirectory
              (emms-track-description track))))))))
 
-(global-set-key (kbd "C-c e <up>") 'emms-start)
-(global-set-key (kbd "C-c e <down>") 'emms-stop)
+(global-set-key (kbd "C-c e p") 'emms-start) ;; (p)lay
+(global-set-key (kbd "C-c e s") 'emms-stop) ;; (s)top
 (global-set-key (kbd "C-c e <left>") 'emms-previous)
 (global-set-key (kbd "C-c e <right>") 'emms-next)
 
