@@ -557,6 +557,31 @@
  '(anzu-search-threshold 1000)
  '(auto-save-default nil)
  '(deft-auto-save-interval 0.0)
+ '(emms-mode-line-cycle-additional-space-num 4)
+ '(emms-mode-line-cycle-current-title-function
+   (lambda nil
+     (let
+         ((track
+           (emms-playlist-current-selected-track)))
+       (cl-case
+           (emms-track-type track)
+         ((streamlist)
+          (let
+              ((stream-name
+                (emms-stream-name
+                 (emms-track-get track
+                                 (quote metadata)))))
+            (if stream-name stream-name
+              (emms-track-description track))))
+         ((url)
+          (emms-track-description track))
+         (t
+          (file-name-nondirectory
+           (emms-track-description track)))))))
+ '(emms-mode-line-cycle-max-width 15)
+ '(emms-mode-line-cycle-use-icon-p t)
+ '(emms-mode-line-format " [%s]")
+ '(emms-source-file-default-directory "~/Music/")
  '(god-mod-alist (quote ((nil . "C-M-"))))
  '(magit-log-arguments (quote ("--graph" "--color" "--decorate")))
  '(magit-log-section-arguments (quote ("--graph" "--color" "--decorate")))
