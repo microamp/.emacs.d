@@ -38,6 +38,7 @@
     erc-hl-nicks
     eredis
     exec-path-from-shell
+    fancy-battery
     fill-column-indicator
     find-file-in-project
     flymake-cursor
@@ -327,8 +328,6 @@
 (define-key global-map (kbd "RET") 'newline-and-indent)
 
 ;; map keybindings for switching to next/previous windows
-(define-key global-map (kbd "M-N") 'other-window)
-(define-key global-map (kbd "M-P") 'previous-multiframe-window)
 (define-key global-map (kbd "C-x n") 'other-window)
 (define-key global-map (kbd "C-x p") 'previous-multiframe-window)
 
@@ -516,8 +515,12 @@
 (advice-add 'deft :after 'deft-filter-clear)
 (advice-add 'deft :after 'deft-refresh)
 
+;; pretty symbols
+(global-prettify-symbols-mode 1)
+(setq prettify-symbols-alist '(("lambda" . 955)))
+
 ;; howdoi keybindings
-(define-key global-map (kbd "C-c M-o") 'howdoi-query)
+(define-key global-map (kbd "C-x M-o") 'howdoi-query)
 
 ;; load custom elisp libraries
 (add-to-list 'load-path custom-lib-dir)
@@ -582,10 +585,12 @@
  '(emms-mode-line-cycle-use-icon-p t)
  '(emms-mode-line-format " [%s]")
  '(emms-source-file-default-directory "~/Music/")
+ '(fancy-battery-show-percentage nil)
  '(god-mod-alist (quote ((nil . "C-M-"))))
  '(magit-log-arguments (quote ("--graph" "--color" "--decorate")))
  '(magit-log-section-arguments (quote ("--graph" "--color" "--decorate")))
  '(magit-log-select-arguments (quote ("--graph" "--color" "--decorate")))
+ '(paradox-github-token t)
  '(sunshine-units (quote metric)))
 
 (custom-set-faces
@@ -597,6 +602,10 @@
  '(avy-lead-face-0 ((t (:background "#076678" :foreground "#FFFFC8"))))
  '(avy-lead-face-1 ((t (:background "#B57614" :foreground "#FFFFC8"))))
  '(avy-lead-face-2 ((t (:background "#A89984" :foreground "white"))))
+ '(ensime-implicit-highlight ((t (:underline "#B57614"))))
+ '(fancy-battery-charging ((t (:foreground "olive drab"))))
+ '(fancy-battery-critical ((t (:foreground "dark red"))))
+ '(fancy-battery-discharging ((t (:foreground "rosy brown"))))
  '(flymake-warnline ((t (:background "#4E3D45"))))
  '(go-direx-package ((t (:foreground "#FB4933" :weight bold))))
  '(highlight-symbol-face ((t (:background "#FB4933"))))
