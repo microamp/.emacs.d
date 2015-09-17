@@ -216,7 +216,8 @@
         " "
         24-hours
         ":"
-        minutes))
+        minutes
+        " "))
 (display-time-mode 1)
 
 ;; default font
