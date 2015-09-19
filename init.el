@@ -289,9 +289,14 @@
 (dired-rainbow-define media "#BC8383" ("mp3" "mp4" "MP3" "MP4" "avi" "mpg" "flv" "ogg"))
 (dired-rainbow-define elisp "#DFAF8F" ("clj" "el" "ex" "exs" "go" "js" "py"))
 
-;; disable automatic scrolling/re-centering
+;; scroll settings
 (setq-default scroll-step 1
-              scroll-margin 0)
+              scroll-margin 0
+              scroll-conservatively 10000
+              redisplay-dont-pause t)
+
+;; gc settings
+(setq-default gc-cons-percentage 0.2)
 
 ;; turn on font-lock mode to colour text in certain modes
 (global-font-lock-mode t)
