@@ -173,7 +173,7 @@
 (menu-bar-mode -1) ;; hide menu bar
 (tool-bar-mode -1) ;; hide tool bar
 (scroll-bar-mode -1) ;; no scroll bars
-(setq debug-on-error t) ;; --debug-init
+(setq debug-on-error nil)
 
 (blink-cursor-mode t) ;; make cursor blink
 
@@ -219,6 +219,9 @@
         minutes
         " "))
 (display-time-mode 1)
+
+;; display battery life
+(fancy-battery-mode 1)
 
 ;; default font
 (set-default-font
@@ -291,7 +294,7 @@
 
 ;; scroll settings
 (setq-default scroll-step 1
-              scroll-margin 0
+              scroll-margin 10
               scroll-conservatively 10000
               redisplay-dont-pause t)
 
@@ -315,7 +318,7 @@
 (add-hook 'prog-mode-hook 'which-func-mode)
 
 ;; snippets via yasnippet
-(define-key company-active-map [tab] nil) ;; disable TAB in company to avoid conflict with yasnippe
+(define-key company-active-map [tab] nil) ;; disable TAB in company to avoid conflict with yasnippet
 (setq yas-snippet-dirs '("~/.emacs.d/plugins/yasnippet/snippets"))
 (add-hook 'prog-mode-hook #'yas-minor-mode)
 
