@@ -135,6 +135,7 @@
 (define-key global-map (kbd "C-c h M-s") 'helm-spotify)
 (define-key global-map (kbd "C-c h d i") 'helm-dash-install-docset)
 (define-key global-map (kbd "C-c h M-e") 'helm-emms)
+(define-key global-map (kbd "C-c e h") 'helm-emms)
 (define-key global-map (kbd "C-c h d u")
   (lambda ()
     (interactive)
