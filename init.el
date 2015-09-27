@@ -294,7 +294,7 @@
 
 ;; scroll settings
 (setq-default scroll-step 1
-              scroll-margin 10
+              scroll-margin 5
               scroll-conservatively 10000
               redisplay-dont-pause t)
 
