@@ -29,11 +29,14 @@
   "Flag to indicate whether `godeps-dir' should be ignored in text search (grep, ag, etc.)."
   :group 'gion)
 
-;; install external packages via 'go get'
-(dolist (p external-packages)
-  (let ((command (concat "go get " p)))
-    (message (concat "running '" command "'..."))
-    (shell-command command)))
+(defun cmd-go-get (pkg upgrade)
+  (let ((upgrade-flag (if upgrade "-u " "")))
+    (shell-command (concat "go get " upgrade-flag pkg))))
+
+;; install/upgrade external packages via 'go get'
+(dolist (pkg external-packages)
+  (message (concat "installing/upgrading " "'" pkg "'..."))
+  (cmd-go-get pkg t))
 
 ;; run `go run` shell command
 (defun cmd-go-run ()
