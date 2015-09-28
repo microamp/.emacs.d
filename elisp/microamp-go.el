@@ -33,10 +33,17 @@
   (let ((upgrade-flag (if upgrade "-u " "")))
     (shell-command (concat "go get " upgrade-flag pkg))))
 
-;; install/upgrade external packages via 'go get'
+;; install external packages via 'go get'
 (dolist (pkg external-packages)
-  (message (concat "installing/upgrading " "'" pkg "'..."))
-  (cmd-go-get pkg t))
+  (message (concat "installing " "'" pkg "'..."))
+  (cmd-go-get pkg nil))
+
+;; upgrade external packages via 'go get'
+(defun go-upgrade-packages ()
+  (interactive)
+  (dolist (pkg external-packages)
+    (message (concat "upgrading " "'" pkg "'..."))
+    (cmd-go-get pkg t)))
 
 ;; run `go run` shell command
 (defun cmd-go-run ()
