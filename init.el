@@ -391,6 +391,9 @@
 (define-key markdown-mode-map (kbd "M-n") 'vi-style-c-e)
 (define-key markdown-mode-map (kbd "M-p") 'vi-style-c-y)
 
+;; truncate lines for markdown mode
+(add-hook 'markdown-mode-hook (lambda () (setq truncate-lines t)))
+
 ;; calfw alias
 (defalias 'cfw 'cfw:open-calendar-buffer)
 
