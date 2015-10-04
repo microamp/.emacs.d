@@ -221,7 +221,7 @@
 (display-time-mode 1)
 
 ;; display battery life
-(fancy-battery-mode 1)
+(add-hook 'after-init-hook #'fancy-battery-mode)
 
 ;; default font
 (set-default-font
