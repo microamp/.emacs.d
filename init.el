@@ -284,6 +284,7 @@
   ("<f10>" highlight-symbol)
   ("n" highlight-symbol-next)
   ("p" highlight-symbol-prev)
+  ("N" highlight-symbol-prev)
   ("q" highlight-symbol-query-replace))
 
 (global-set-key (kbd "<f10>") 'hydra-highlight-symbol/body)
