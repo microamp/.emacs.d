@@ -55,6 +55,7 @@
     go-errcheck
     go-mode
     go-play
+    go-playground
     god-mode
     golint
     google-this

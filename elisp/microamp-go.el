@@ -149,10 +149,10 @@
 (define-key go-mode-map (kbd "M-.") 'godef-jump)
 (define-key go-mode-map (kbd "M-,") 'pop-tag-mark)
 
-;; keybindings: go playground (go pastebin)
-(define-key go-mode-map (kbd "C-c C-p b") 'go-play-buffer)
-(define-key go-mode-map (kbd "C-c C-p r") 'go-play-region)
-(define-key go-mode-map (kbd "C-c C-p d") 'go-download-play)
+;; keybindings: like go playground but running locally
+(define-key go-mode-map (kbd "C-c C-p n") 'go-playground) ;; (n)ew
+(define-key go-mode-map (kbd "C-c C-p s") 'go-playground-remove-current-snippet) ;; (s)ave
+(define-key go-mode-map (kbd "C-c C-p u") 'go-playground-send-to-play.golang.org) ;; (u)pload
 
 ;; keybindings: errcheck
 (define-key go-mode-map (kbd "C-c C-e")
